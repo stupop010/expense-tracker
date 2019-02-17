@@ -1,0 +1,22 @@
+div {
+  text-align: center;
+}
+ul {
+  margin: 0;
+  list-style: none;
+}
+li {
+  display: inline;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+a:active {
+  text-decoration: underline;
+}
+a:hover {
+  color: black;
+}
+a {
+  color: #666;
+  text-decoration: none;
+}
