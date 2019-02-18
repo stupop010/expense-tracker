@@ -6,6 +6,7 @@ const keys = require("./config/key");
 const cookieSession = require("cookie-session");
 
 require("./models/User");
+require("./models/Expense");
 require("./services/passport");
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes")(app);
+require("./routes/expenseRoutes")(app);
 
 mongoose
   .connect(keys.mongoDB, { useNewUrlParser: true })
