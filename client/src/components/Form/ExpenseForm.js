@@ -1,14 +1,15 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import "../css/form.css";
+import "./form.css";
 
 const ExpenseForm = props => {
   const { handleSubmit, reset } = props;
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit} className="expense-form">
+      <h1>Add Expenses</h1>
       <div>
-        <label />
-        <div className="formGroup">
+        <div className="form-group">
+          <label>Categories</label>
           <Field name="favoriteColor" component="select" className="input">
             <option value="red">Red</option>
             <option value="green">Green</option>
@@ -16,7 +17,7 @@ const ExpenseForm = props => {
           </Field>
         </div>
       </div>
-      <div className="formGroup">
+      <div className="form-group">
         <label>How Much:</label>
         <div>
           <Field
@@ -28,20 +29,22 @@ const ExpenseForm = props => {
           />
         </div>
       </div>
-      <div className="formGroup">
+      <div className="form-group">
         <label>Description:</label>
         <div>
           <Field
             name="notes"
             component="input"
             type="text"
-            placeholder="description"
+            placeholder="Description"
             className="input"
           />
         </div>
       </div>
-      <button type="submit">Sumbit</button>
-      <button onClick={reset}>Clear</button>
+      <div className="form-group">
+        <button type="submit">Sumbit</button>
+        <button onClick={reset}>Clear</button>
+      </div>
     </form>
   );
 };
