@@ -2,6 +2,8 @@
   text-align: center;
   padding: 1rem 0;
   background: #e5e7ea;
+  border-bottom: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
 }
 .main-nav ul {
   margin: 0;

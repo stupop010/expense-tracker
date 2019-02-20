@@ -1,25 +1,43 @@
 import React, { Component } from "react";
 import NavBar from "./components/MainNav/NavBar";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./css/app.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import { fetchUser } from "./action/index";
 
 class App extends Component {
+  componentDidMount() {
+    console.log("didmount");
+    this.props.fetchUser();
+  }
   render() {
     return (
       <Router>
         <div className="App">
           <NavBar />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/login" component={Login} />
+          </Switch>
         </div>
       </Router>
     );
   }
 }
-
-export default App;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+export default connect(
+  mapStateToProps,
+  { fetchUser }
+)(App);

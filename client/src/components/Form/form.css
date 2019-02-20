@@ -1,10 +1,12 @@
 .expense-form {
+  position: relative;
   width: 25rem;
   max-width: 100%;
   margin: 4rem auto;
   border: 1px black solid;
   background-color: #eff0f2;
   text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.26);
 }
 .form-group {
   margin: 1rem auto;
