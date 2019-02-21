@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./components/MainNav/NavBar";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./css/app.css";
@@ -16,7 +11,6 @@ import { fetchUser } from "./action/index";
 
 class App extends Component {
   componentDidMount() {
-    console.log("didmount");
     this.props.fetchUser();
   }
   render() {

@@ -1,11 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 import timeOfDay from "../../helpers/timeOfDay";
 import "./navBar.css";
 
 class NavBar extends Component {
+  render() {
+    return (
+      <div className="main-nav">
+        <ul>
+          <li>
+            <NavLink exact to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink exact to="/dashboard">
+              DashBoard
+            </NavLink>
+          </li>
+          {this.renderAuth()}
+          {this.renderName()}
+        </ul>
+      </div>
+    );
+  }
   renderAuth() {
     switch (this.props.auth) {
       case null:
@@ -24,26 +44,16 @@ class NavBar extends Component {
         ];
     }
   }
-  render() {
-    return (
-      <div className="main-nav">
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard">DashBoard</NavLink>
-          </li>
-          {this.renderAuth()}
-        </ul>
-      </div>
-    );
+  renderName() {
+    if (this.props.auth) {
+      return <div>hello</div>;
+    }
+    return null;
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return { auth: state.auth };
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps)(NavBar));
