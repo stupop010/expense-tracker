@@ -2,13 +2,33 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 
-import timeOfDay from "../../helpers/timeOfDay";
+import { openSidebar, closedSidebar } from "../../action/index";
+import Sidebar from "./Sidebar";
+
 import "./navBar.css";
 
 class NavBar extends Component {
+  state = {
+    active: false
+  };
+  handleClick() {
+    this.setState({ active: true });
+    this.props.openSidebar();
+  }
+  handleClickClose() {
+    this.setState({ active: false });
+    this.props.closedSidebar();
+  }
   render() {
     return (
       <div className="main-nav">
+        <button
+          type="button"
+          className={this.props.sidebar}
+          onClick={this.handleClick.bind(this)}
+        >
+          hello
+        </button>
         <ul>
           <li>
             <NavLink exact to="/">
@@ -21,8 +41,11 @@ class NavBar extends Component {
             </NavLink>
           </li>
           {this.renderAuth()}
-          {this.renderName()}
         </ul>
+        {this.renderName()}
+        {this.state.active && (
+          <Sidebar handleClickClose={this.handleClickClose.bind(this)} />
+        )}
       </div>
     );
   }
@@ -46,14 +69,19 @@ class NavBar extends Component {
   }
   renderName() {
     if (this.props.auth) {
-      return <div>hello</div>;
+      return <div className="wel-msg">Hello {this.props.auth.username}</div>;
     }
     return null;
   }
 }
 
 function mapStateToProps(state) {
-  return { auth: state.auth };
+  return { auth: state.auth, sidebar: state.sidebar };
 }
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { openSidebar, closedSidebar }
+  )(NavBar)
+);

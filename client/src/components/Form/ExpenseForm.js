@@ -10,10 +10,12 @@ const ExpenseForm = props => {
       <div>
         <div className="form-group">
           <label>Categories</label>
-          <Field name="favoriteColor" component="select" className="input">
-            <option value="red">Red</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
+          <Field name="categries" component="select" className="input">
+            <option value="" />
+            <option value="Food/Drink">Food/Drink</option>
+            <option value="Travel">Travel</option>
+            <option value="Rent/Bills">Rent/Bills</option>
+            <option value="Clothing">Clothing</option>
           </Field>
         </div>
       </div>
@@ -33,7 +35,7 @@ const ExpenseForm = props => {
         <label>Description:</label>
         <div>
           <Field
-            name="notes"
+            name="description"
             component="input"
             type="text"
             placeholder="Description"
@@ -43,7 +45,9 @@ const ExpenseForm = props => {
       </div>
       <div className="form-group">
         <button type="submit">Sumbit</button>
-        <button onClick={reset}>Clear</button>
+        <button type="button" onClick={reset}>
+          Clear
+        </button>
       </div>
     </form>
   );

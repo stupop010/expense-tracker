@@ -1,9 +1,12 @@
 .main-nav {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
   padding: 1rem 0;
   background: #e5e7ea;
   border-bottom: linear-gradient(to bottom, #3acfd5 0%, #3a4ed5 100%);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
+  overflow: hidden;
 }
 .main-nav ul {
   margin: 0;
@@ -25,4 +28,40 @@
 .main-nav a.active {
   border-bottom: solid 3px black;
   color: black;
+}
+
+.wel-msg {
+  display: inline;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 0.4rem;
+}
+
+.sidebar {
+  position: absolute;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 17vw;
+  background-color: red;
+  transition: all 0.3s;
+  z-index: 99999;
+}
+.open {
+  display: none;
+}
+@media (max-width: 600px) {
+  .wel-msg {
+    display: none;
+  }
+}
+
+@media (max-width: 999px) {
+  .wel-msg {
+    display: none;
+  }
 }
