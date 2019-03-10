@@ -2,34 +2,39 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 
-import { openSidebar, closedSidebar } from "../../action/index";
-import Sidebar from "./Sidebar";
+import Sidebar from "../sidebar/Sidebar";
 
 import "./navBar.css";
 
 class NavBar extends Component {
   state = {
-    active: false
+    active: false,
+    classname: "sidebar"
   };
-  handleClick() {
-    this.setState({ active: true });
-    this.props.openSidebar();
-  }
-  handleClickClose() {
-    this.setState({ active: false });
-    this.props.closedSidebar();
-  }
+
+  handleClick = event => {
+    this.setState({
+      active: !this.state.active,
+      classname: "sidebar open-side"
+    });
+  };
+
+  handleClickClose = event => {
+    this.setState({
+      active: !this.state.active,
+      classname: "sidebar close-side"
+    });
+  };
+
   render() {
     return (
       <div className="main-nav">
         <button
           type="button"
-          className={this.props.sidebar}
-          onClick={this.handleClick.bind(this)}
-        >
-          hello
-        </button>
-        <ul>
+          className="main-btn toggle"
+          onClick={this.handleClick}
+        />
+        <ul className="nav-ul">
           <li>
             <NavLink exact to="/">
               Home
@@ -42,10 +47,14 @@ class NavBar extends Component {
           </li>
           {this.renderAuth()}
         </ul>
-        {this.renderName()}
-        {this.state.active && (
-          <Sidebar handleClickClose={this.handleClickClose.bind(this)} />
-        )}
+        {this.props.auth ? (
+          <div className="wel-msg">Hello {this.props.auth.username}</div>
+        ) : null}
+
+        <Sidebar
+          handleClickClose={this.handleClickClose}
+          classname={this.state.classname}
+        />
       </div>
     );
   }
@@ -67,21 +76,10 @@ class NavBar extends Component {
         ];
     }
   }
-  renderName() {
-    if (this.props.auth) {
-      return <div className="wel-msg">Hello {this.props.auth.username}</div>;
-    }
-    return null;
-  }
 }
 
 function mapStateToProps(state) {
-  return { auth: state.auth, sidebar: state.sidebar };
+  return { auth: state.auth };
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { openSidebar, closedSidebar }
-  )(NavBar)
-);
+export default withRouter(connect(mapStateToProps)(NavBar));

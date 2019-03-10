@@ -27,3 +27,25 @@
   font-size: 130%;
   background-color: #eff0f6;
 }
+
+.card-anim {
+  animation-name: example;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: backwards;
+}
+
+@keyframes example {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    transform: translate(-1000px);
+  }
+  90% {
+    transform: translate(30px);
+  }
+  100% {
+    opacity: 1;
+  }
+}

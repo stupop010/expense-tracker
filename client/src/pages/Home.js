@@ -10,8 +10,8 @@ class Home extends Component {
   componentDidMount() {
     this.props.fetchExpenses();
   }
-  onSubmit = e => {
-    this.props.addExpense(e);
+  onSubmit = value => {
+    this.props.addExpense(value);
   };
   render() {
     return (
