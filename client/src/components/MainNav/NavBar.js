@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 import Sidebar from "../sidebar/Sidebar";
 
@@ -77,6 +78,10 @@ class NavBar extends Component {
     }
   }
 }
+
+NavBar.propTypes = {
+  auth: PropTypes.object.isRequired
+};
 
 function mapStateToProps(state) {
   return { auth: state.auth };

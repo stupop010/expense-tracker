@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 import "./recentLog.css";
 
@@ -7,7 +8,7 @@ class RecentLog extends Component {
     return (
       <div className="card-contaniner">
         <h1 className="header">Recent Expenses</h1>
-        {this.props.item
+        {this.props.expense
           .map(item => (
             <div key={item._id} className="card card-anim">
               <p>
@@ -23,6 +24,11 @@ class RecentLog extends Component {
       </div>
     );
   }
+}
+
+
+RecentLog.propTypes = {
+  expense: PropTypes.object.isRequired
 }
 
 export default RecentLog;

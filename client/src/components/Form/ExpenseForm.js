@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
+import Form from './Form'
 import "./form.css";
 
 class ExpenseForm extends Component {
@@ -11,6 +14,7 @@ class ExpenseForm extends Component {
   onClear = e => {
     this.setState({ categries: "", price: "", description: "" });
   };
+  
   handleSubmit = e => {
     const value = {
       categries: this.state.categries,
@@ -21,64 +25,16 @@ class ExpenseForm extends Component {
     this.onClear();
     e.preventDefault();
   };
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="expense-form">
-        <h1>Add Expenses</h1>
-        <div>
-          <div className="form-group">
-            <label>Categories</label>
-            <select
-              name="categries"
-              className="input"
-              onChange={this.handleChange}
-              value={this.state.categries}
-            >
-              <option value="" />
-              <option value="Food/Drink">Food/Drink</option>
-              <option value="Travel">Travel</option>
-              <option value="Rent/Bills">Rent/Bills</option>
-              <option value="Clothing">Clothing</option>
-            </select>
-          </div>
-        </div>
-        <div className="form-group">
-          <label>How Much:</label>
-          <div>
-            <input
-              name="price"
-              type="number"
-              placeholder="How Much"
-              className="input"
-              value={this.state.price}
-              onChange={this.handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <label>Description:</label>
-          <div>
-            <input
-              name="description"
-              type="text"
-              placeholder="Description"
-              className="input"
-              value={this.state.description}
-              onChange={this.handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <button type="submit" className="form-button">
-            Sumbit
-          </button>
-          <button type="button" className="form-button" onClick={this.onClear}>
-            Clear
-          </button>
-        </div>
-      </form>
-    );
+      <Form submit={this.handleSubmit} change={this.handleChange} valueCategries={this.state.categries} valuePrice={this.state.price} valueDes={this.state.description} clear={this.onClear} />
+    )
   }
 }
+
+ExpenseForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default ExpenseForm;
