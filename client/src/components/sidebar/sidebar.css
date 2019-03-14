@@ -7,6 +7,7 @@
   width: 17vw;
   background-color: #666;
   z-index: 99999;
+  box-shadow: 5px 5px 5px #888888;
 }
 .sidebar-nav {
   margin: 0;
