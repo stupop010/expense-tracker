@@ -5,10 +5,10 @@ import "./sidebar.css";
 
 const Sidebar = props => {
   return (
-    <div className={props.classname}>
+    <div className={props.className}>
       <button
         type="button"
-        class="close-btn close"
+        className="close-btn close"
         onClick={props.handleClickClose}
       />
       <ul className="sidebar-nav">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Form from './Form'
+import Form from "./Form";
 import "./form.css";
 
 class ExpenseForm extends Component {
@@ -14,7 +14,7 @@ class ExpenseForm extends Component {
   onClear = e => {
     this.setState({ categries: "", price: "", description: "" });
   };
-  
+
   handleSubmit = e => {
     const value = {
       categries: this.state.categries,
@@ -28,8 +28,15 @@ class ExpenseForm extends Component {
 
   render() {
     return (
-      <Form submit={this.handleSubmit} change={this.handleChange} valueCategries={this.state.categries} valuePrice={this.state.price} valueDes={this.state.description} clear={this.onClear} />
-    )
+      <Form
+        submit={this.handleSubmit}
+        change={this.handleChange}
+        valueCategries={this.state.categries}
+        valuePrice={this.state.price}
+        valueDes={this.state.description}
+        clear={this.onClear}
+      />
+    );
   }
 }
 

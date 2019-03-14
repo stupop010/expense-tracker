@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./recentLog.css";
 
@@ -26,9 +26,8 @@ class RecentLog extends Component {
   }
 }
 
-
 RecentLog.propTypes = {
-  expense: PropTypes.object.isRequired
-}
+  expense: PropTypes.array.isRequired
+};
 
 export default RecentLog;

@@ -1,33 +1,34 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import Sidebar from "../sidebar/Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 
 import "./navBar.css";
 
 class NavBar extends Component {
   state = {
     active: false,
-    classname: "sidebar"
+    className: "sidebar"
   };
 
   handleClick = event => {
     this.setState({
       active: !this.state.active,
-      classname: "sidebar open-side"
+      className: "sidebar open-side"
     });
   };
 
   handleClickClose = event => {
     this.setState({
       active: !this.state.active,
-      classname: "sidebar close-side"
+      className: "sidebar close-side"
     });
   };
 
   render() {
+    const { className, active } = this.state;
     return (
       <div className="main-nav">
         <button
@@ -54,7 +55,8 @@ class NavBar extends Component {
 
         <Sidebar
           handleClickClose={this.handleClickClose}
-          classname={this.state.classname}
+          className={className}
+          active={active}
         />
       </div>
     );
@@ -80,7 +82,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object
 };
 
 function mapStateToProps(state) {

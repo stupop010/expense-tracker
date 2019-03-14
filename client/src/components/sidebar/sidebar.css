@@ -24,6 +24,10 @@
   text-decoration: none;
   color: #f4f4f4;
 }
+.sidebar-nav a:hover {
+  color: darkgrey;
+  font-size: 110%;
+}
 .sidebar-nav a.active {
   border-bottom: solid 3px black;
   color: black;

@@ -1,0 +1,33 @@
+.login {
+  position: absolute;
+  width: 35%;
+  height: 75%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(92, 85, 85);
+  border: 2px solid black;
+  box-shadow: 10px 10px 8px #888888;
+}
+.sign-form {
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  height: 100%;
+}
+
+.form-group > label {
+  margin-top: 100px;
+}
+
+.sign-form > h1 {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 0.1em;
+}
+
+.log {
+  position: relative;
+  text-align: center;
+  left: 12%;
+}
