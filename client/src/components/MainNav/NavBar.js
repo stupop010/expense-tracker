@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { getUser } from "../../selections/UserSelection";
 import Sidebar from "../Sidebar/Sidebar";
 
 import "./navBar.css";
@@ -86,7 +87,7 @@ NavBar.propTypes = {
 };
 
 function mapStateToProps(state) {
-  return { auth: state.auth };
+  return { auth: getUser(state) };
 }
 
 export default withRouter(connect(mapStateToProps)(NavBar));

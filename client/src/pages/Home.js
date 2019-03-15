@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
 import { addExpense, fetchExpenses } from "../action";
-import { getUser } from "../selections/UserSelection";
+import { getExpense } from "../selections/ExpenseSelection";
 import "../css/app.css";
 
 class Home extends Component {
@@ -26,7 +26,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  return { expense: getUser(state) };
+  return { expense: getExpense(state) };
 }
 
 Home.protoTypes = {
