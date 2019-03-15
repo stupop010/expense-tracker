@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
 import { addExpense, fetchExpenses } from "../action";
+import { getUser } from "../selections/UserSelection";
 import "../css/app.css";
 
 class Home extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchExpenses();
   }
   onSubmit = value => {
@@ -25,8 +25,8 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({ expense }) {
-  return { expense };
+function mapStateToProps(state) {
+  return { expense: getUser(state) };
 }
 
 Home.protoTypes = {
