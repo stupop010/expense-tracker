@@ -7,7 +7,7 @@ import "./css/app.css";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import { fetchUser } from "./action/index";
+import { fetchUser } from "./action/userAction";
 
 class App extends Component {
   componentDidMount() {

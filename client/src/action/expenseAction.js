@@ -1,5 +1,9 @@
 import axios from "axios";
-import { FETCH_USER, ADD_EXPENSE, FETCH_EXPENSES } from "./types";
+import {
+  ADD_EXPENSE,
+  FETCH_EXPENSES,
+  IS_FETCHING
+} from "../constants/actionTypes";
 
 // Add expense
 export const addExpense = item => async dispatch => {
@@ -9,13 +13,7 @@ export const addExpense = item => async dispatch => {
 
 //Fetch All Expense
 export const fetchExpenses = () => async dispatch => {
+  dispatch({ type: IS_FETCHING });
   const res = await axios.get("/expense/all");
   dispatch({ type: FETCH_EXPENSES, payload: res.data });
-};
-
-//Fetch User
-export const fetchUser = () => async dispatch => {
-  const res = await axios.get("/api/user");
-
-  dispatch({ type: FETCH_USER, payload: res.data });
 };

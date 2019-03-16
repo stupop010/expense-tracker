@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
-import { addExpense, fetchExpenses } from "../action";
+import { addExpense, fetchExpenses } from "../action/expenseAction";
 import { getExpense } from "../selections/ExpenseSelection";
 import "../css/app.css";
 
@@ -19,7 +19,7 @@ class Home extends Component {
     return (
       <div className="main-app">
         <ExpenseForm onSubmit={this.onSubmit} />
-        <RecentLog expense={this.props.expense} />
+        <RecentLog expense={this.props.expense} isLoading />
       </div>
     );
   }

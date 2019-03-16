@@ -1,4 +1,4 @@
-import { FETCH_USER } from "../action/types";
+import { FETCH_USER } from "../constants/actionTypes";
 
 export default function(state = null, action) {
   switch (action.type) {

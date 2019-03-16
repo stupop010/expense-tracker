@@ -1,9 +1,9 @@
 .login {
-  position: absolute;
+  position: relative;
   width: 35%;
-  height: 75%;
+  height: 30em;
   left: 50%;
-  top: 50%;
+  top: 20em;
   transform: translate(-50%, -50%);
   background: rgb(92, 85, 85);
   border: 2px solid black;
