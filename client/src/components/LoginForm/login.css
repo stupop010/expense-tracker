@@ -31,3 +31,9 @@
   text-align: center;
   left: 12%;
 }
+
+@media (max-width: 600px) {
+  .login {
+    width: 75%;
+  }
+}
