@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
 import { addExpense, fetchExpenses } from "../action/expenseAction";
-import { getExpense } from "../selections/ExpenseSelection";
+import { getExpense, getLoading } from "../selections/ExpenseSelection";
 import "../css/app.css";
 
 class Home extends Component {
@@ -16,17 +16,18 @@ class Home extends Component {
     this.props.addExpense(value);
   };
   render() {
+    const { expense, loading } = this.props;
     return (
       <div className="main-app">
         <ExpenseForm onSubmit={this.onSubmit} />
-        <RecentLog expense={this.props.expense} isLoading />
+        <RecentLog expense={expense} loading={loading} />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { expense: getExpense(state) };
+  return { expense: getExpense(state), loading: getLoading(state) };
 }
 
 Home.protoTypes = {

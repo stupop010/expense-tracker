@@ -4,7 +4,7 @@
   left: -50%;
   top: 0;
   height: 100%;
-  width: 17vw;
+  width: 20%;
   background-color: #666;
   z-index: 99999;
   box-shadow: 5px 5px 5px #888888;
@@ -104,11 +104,6 @@
 }
 
 @media (max-width: 640px) {
-  .sidebar {
-    width: 50%;
-  }
-}
-@media (max-width: 1024px) {
   .sidebar {
     width: 35%;
   }
