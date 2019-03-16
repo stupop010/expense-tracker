@@ -8,7 +8,6 @@ class RecentLog extends Component {
   render() {
     return (
       <div className="card-contaniner">
-        <Loader />
         <h1 className="header">Recent Expenses</h1>
         {this.props.expense.items
           .map(item => (
