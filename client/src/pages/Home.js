@@ -10,13 +10,15 @@ import "../css/app.css";
 
 class Home extends Component {
   componentDidMount() {
+    console.log(this.props);
     this.props.fetchExpenses();
   }
   onSubmit = value => {
     this.props.addExpense(value);
   };
   render() {
-    const { expense, loading } = this.props;
+    console.log(this.props);
+    const { expense, loading, auth } = this.props;
     return (
       <div className="main-app">
         <ExpenseForm onSubmit={this.onSubmit} />
@@ -33,7 +35,8 @@ function mapStateToProps(state) {
 Home.protoTypes = {
   addExpense: PropTypes.func.isRequired,
   fetchExpenses: PropTypes.func.isRequired,
-  expense: PropTypes.object.isRequired
+  expense: PropTypes.object.isRequired,
+  auth: PropTypes.any.isRequired
 };
 
 export default connect(

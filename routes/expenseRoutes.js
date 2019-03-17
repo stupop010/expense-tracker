@@ -4,7 +4,6 @@ const Expense = mongoose.model("expense");
 
 module.exports = app => {
   app.post("/expense/post", async (req, res) => {
-    console.log(req.body);
     const { price, description, categries } = req.body;
 
     const expense = new Expense({

@@ -1,0 +1,11 @@
+.dash-container {
+  position: relative;
+  margin-top: 2em;
+  left: 5%;
+  width: 90vw;
+  height: 100vh;
+  background: red;
+  box-sizing: border-box;
+  border: 2px solid black;
+  background: transparent;
+}

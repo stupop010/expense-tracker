@@ -44,6 +44,11 @@ class NavBar extends Component {
             </NavLink>
           </li>
           <li>
+            <NavLink exact to="/log">
+              Log
+            </NavLink>
+          </li>
+          <li>
             <NavLink exact to="/dashboard">
               DashBoard
             </NavLink>
@@ -58,6 +63,7 @@ class NavBar extends Component {
           handleClickClose={this.handleClickClose}
           className={className}
           active={active}
+          auth={this.props.auth}
         />
       </div>
     );
@@ -73,11 +79,11 @@ class NavBar extends Component {
           </li>
         );
       default:
-        return [
-          <li key="2" className="nav-item">
+        return (
+          <li className="nav-item">
             <a href="/api/logout">LogOut</a>
           </li>
-        ];
+        );
     }
   }
 }
