@@ -47,12 +47,12 @@ html {
 
 .landing-button {
   color: red;
-  width: 7em;
-  height: 4em;
+  padding: 1em;
   border-radius: 25%;
   border: 2px solid black;
   background: black;
   color: white;
+  text-decoration: none;
 }
 .landing-button:hover {
   background: white;
