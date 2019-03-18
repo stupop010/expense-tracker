@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { connect } from "react-redux";
 
 import "./css/app.css";
@@ -19,12 +24,17 @@ class App extends Component {
     this.props.fetchUser();
   }
   render() {
+    const { auth } = this.props;
     return (
       <Router>
         <div className="App">
+          <NavBar />
           <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <NavBar />
+            <Route
+              exact
+              path="/"
+              render={() => (auth ? <Redirect to="/home" /> : <LandingPage />)}
+            />
             <Route
               exact
               path="/home"

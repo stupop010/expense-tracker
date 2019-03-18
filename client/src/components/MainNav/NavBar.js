@@ -9,6 +9,9 @@ import Sidebar from "../Sidebar/Sidebar";
 import "./navBar.css";
 
 class NavBar extends Component {
+  componentDidMount() {
+    console.log(window.location.pathname);
+  }
   state = {
     active: false,
     className: "sidebar"
@@ -39,7 +42,7 @@ class NavBar extends Component {
         />
         <ul className="nav-ul">
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/home">
               Home
             </NavLink>
           </li>
@@ -75,7 +78,7 @@ class NavBar extends Component {
       case false:
         return (
           <li className="nav-item">
-            <a href="/auth/google">Login</a>
+            <a href="/login">Login</a>
           </li>
         );
       default:

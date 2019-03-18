@@ -30,6 +30,9 @@ const LoginForm = props => {
           Resigter
         </button>
         <br />
+        <a href="/auth/google" className="google-link">
+          Login in with google
+        </a>
       </form>
     </div>
   );

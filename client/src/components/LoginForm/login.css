@@ -33,6 +33,11 @@
   text-align: center;
   left: 12%;
 }
+.google-link {
+  position: relative;
+  top: 2em;
+  left: 40%;
+}
 
 @keyframes comingIn {
   0% {

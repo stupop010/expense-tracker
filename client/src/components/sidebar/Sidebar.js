@@ -15,7 +15,7 @@ class Sidebar extends Component {
         />
         <ul className="sidebar-nav">
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/home">
               Home
             </NavLink>
           </li>
