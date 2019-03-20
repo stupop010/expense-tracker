@@ -13,29 +13,29 @@ class RecentLog extends Component {
   }
   render() {
     const { expense } = this.props;
+    console.log(expense);
+    // const NewExpense = [...expense].reverse();
     return (
       <div className="card-contaniner">
         {this.renderLoading()}
         <h1 className="header">Recent Expenses</h1>
-        {expense
-          .map(item => (
-            <div key={item._id} className="card card-anim">
-              <ul>
-                <li>
-                  <span>Category: </span>
-                  {item.category}
-                </li>
-                <li>
-                  <span>Description: </span>
-                  {item.description}
-                </li>
-                <li>
-                  <span>Price: </span>£{item.price}
-                </li>
-              </ul>
-            </div>
-          ))
-          .reverse()}
+        {expense.map(item => (
+          <div key={item._id} className="card card-anim">
+            <ul>
+              <li>
+                <span>Category: </span>
+                {item.category}
+              </li>
+              <li>
+                <span>Description: </span>
+                {item.description}
+              </li>
+              <li>
+                <span>Price: </span>£{item.price}
+              </li>
+            </ul>
+          </div>
+        ))}
       </div>
     );
   }

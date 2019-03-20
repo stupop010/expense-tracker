@@ -21,6 +21,8 @@ module.exports = app => {
   app.get("/expense/all", async (req, res) => {
     const expense = await Expense.find({ _user: req.user.id });
     const newExpense = expense.slice(Math.max(expense.length - 5, 1));
-    res.send(newExpense);
+    // console.log(newExpense);
+    // res.json(expense);
+    res.json(newExpense);
   });
 };

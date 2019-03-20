@@ -1,7 +1,7 @@
 body,
 html {
   margin: 0;
-  background-color: #e5e7ea;
+  background-color: rgba(194, 195, 195, 0.5);
 }
 
 .main-app {
