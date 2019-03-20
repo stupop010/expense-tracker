@@ -2,44 +2,21 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Loader from "../Loader/Loader";
+import Log from "./Log";
 import "./recentLog.css";
 
-class RecentLog extends Component {
-  renderLoading() {
-    const { loading } = this.props;
-    if (loading) {
-      return <Loader styles={{ marginTop: "30px" }} />;
-    }
-  }
-  render() {
-    const { expense } = this.props;
-    console.log(expense);
-    // const NewExpense = [...expense].reverse();
-    return (
-      <div className="card-contaniner">
-        {this.renderLoading()}
-        <h1 className="header">Recent Expenses</h1>
-        {expense.map(item => (
-          <div key={item._id} className="card card-anim">
-            <ul>
-              <li>
-                <span>Category: </span>
-                {item.category}
-              </li>
-              <li>
-                <span>Description: </span>
-                {item.description}
-              </li>
-              <li>
-                <span>Price: </span>£{item.price}
-              </li>
-            </ul>
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+const RecentLog = props => {
+  const { expense, loading } = props;
+  return (
+    <div className="card-contaniner">
+      {loading ? (
+        <Loader styles={{ marginTop: "30px" }} />
+      ) : (
+        <Log expense={expense} />
+      )}
+    </div>
+  );
+};
 
 RecentLog.propTypes = {
   expense: PropTypes.array.isRequired,

@@ -27,7 +27,7 @@ class App extends Component {
     const { auth } = this.props;
     return (
       <Router>
-        <div className="App">
+        <div className="main-app">
           <NavBar />
           <Switch>
             <Route

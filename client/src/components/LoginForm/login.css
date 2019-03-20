@@ -5,7 +5,7 @@
   left: 50%;
   top: 20em;
   transform: translate(-50%, -50%);
-  background: rgb(92, 85, 85);
+  background: rgba(102, 102, 102, 0.5);
   border: 2px solid black;
   box-shadow: 10px 10px 8px #888888;
   transform-origin: left top;

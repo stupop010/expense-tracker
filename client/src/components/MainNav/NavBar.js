@@ -9,30 +9,24 @@ import Sidebar from "../Sidebar/Sidebar";
 import "./navBar.css";
 
 class NavBar extends Component {
-  componentDidMount() {
-    console.log(window.location.pathname);
-  }
   state = {
-    active: false,
     className: "sidebar"
   };
 
   handleClick = event => {
     this.setState({
-      active: !this.state.active,
       className: "sidebar open-side"
     });
   };
 
   handleClickClose = event => {
     this.setState({
-      active: !this.state.active,
       className: "sidebar close-side"
     });
   };
 
   render() {
-    const { className, active } = this.state;
+    const { className, auth } = this.state;
     return (
       <div className="main-nav">
         <button
@@ -56,23 +50,20 @@ class NavBar extends Component {
               DashBoard
             </NavLink>
           </li>
-          {this.renderAuth()}
+          {this.renderAuth(auth)}
         </ul>
-        {this.props.auth ? (
-          <div className="wel-msg">Hello {this.props.auth.username}</div>
-        ) : null}
+        {auth ? <div className="wel-msg">Hello {auth.username}</div> : null}
 
         <Sidebar
           handleClickClose={this.handleClickClose}
           className={className}
-          active={active}
-          auth={this.props.auth}
+          auth={auth}
         />
       </div>
     );
   }
-  renderAuth() {
-    switch (this.props.auth) {
+  renderAuth(auth) {
+    switch (auth) {
       case null:
         return;
       case false:
