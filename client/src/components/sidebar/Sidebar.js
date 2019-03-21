@@ -61,7 +61,7 @@ const renderAuth = auth => {
 
 Sidebar.propTypes = {
   handleClickClose: PropTypes.func.isRequired,
-  auth: PropTypes.any.isRequired,
+  auth: PropTypes.any,
   className: PropTypes.string.isRequired
 };
 

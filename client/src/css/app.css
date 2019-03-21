@@ -3,80 +3,10 @@ html {
   margin: 0;
   background-color: rgba(194, 195, 195, 0.5);
 }
-
+a {
+  text-decoration: none;
+}
 .main-app {
   height: 100vh;
   overflow: scroll;
-}
-
-.landing-page {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(
-      0deg,
-      rgba(22, 84, 143, 0.8) 0%,
-      rgba(255, 252, 226, 0.5) 100%
-    ),
-    url(../landing-page.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.landing-page-title {
-  margin: 0;
-  position: relative;
-  text-align: center;
-  top: 30%;
-  font-size: 4em;
-  color: black;
-  animation: fromUp 700ms ease-in-out 0s forwards;
-}
-
-.landing-page div {
-  position: relative;
-  text-align: center;
-  top: 30%;
-  opacity: 0;
-  animation: fromBottom 700ms ease-in-out 200ms forwards;
-}
-
-.landing-page div p {
-  font-size: 2.5em;
-}
-
-.landing-button {
-  color: red;
-  padding: 1em;
-  border-radius: 25%;
-  border: 2px solid black;
-  background: black;
-  color: white;
-  text-decoration: none;
-}
-.landing-button:hover {
-  background: white;
-  color: black;
-}
-
-@keyframes fromUp {
-  0% {
-    transform: translate(0, -200%) scale(0.1);
-    opacity: 0.1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes fromBottom {
-  0% {
-    transform: translate(0, 200%) scale(0.1);
-    opacity: 0.1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
 }

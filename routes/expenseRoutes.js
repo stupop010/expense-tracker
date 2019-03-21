@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 
 const Expense = mongoose.model("expense");
 
+const slice_reverse = require("../utils/sliceReverse");
+const ITEM_PER_PAGE = 10;
+
 module.exports = app => {
   app.post("/expense/post", async (req, res) => {
     const { price, description, categries } = req.body;
@@ -14,15 +17,36 @@ module.exports = app => {
       date: Date.now()
     });
 
-    const newExpense = await expense.save();
-    res.send(newExpense);
+    try {
+      await expense.save();
+      res.status(201).send(newExpense);
+    } catch (e) {
+      res.status(400).send(e);
+    }
   });
 
+  // Route to get the 5 most recent
+  app.get("/expense/get_5", async (req, res) => {
+    try {
+      const expense = await Expense.find({ _user: req.user.id });
+      const revExpense = slice_reverse(expense);
+      res.send(revExpense);
+    } catch (e) {
+      res.status(500).send();
+    }
+  });
+
+  // Route to Pagination
   app.get("/expense/all", async (req, res) => {
-    const expense = await Expense.find({ _user: req.user.id });
-    const newExpense = expense.slice(Math.max(expense.length - 5, 1));
-    // console.log(newExpense);
-    // res.json(expense);
-    res.json(newExpense);
+    console.log(req);
+    try {
+      const expense = await Expense.find()
+        .sort({ date: -1 })
+        .limit(parseInt(req.query.limit))
+        .skip(parseInt(req.query.skip));
+      res.json(expense);
+    } catch (e) {
+      res.status(500).send();
+    }
   });
 };

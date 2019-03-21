@@ -3,6 +3,7 @@ import {
   FETCH_EXPENSES,
   IS_FETCHING
 } from "../constants/actionTypes";
+import { sliceFive } from "../utils/sliceFive";
 
 const initialState = {
   items: [],
@@ -15,7 +16,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        items: [action.payload, ...state.items]
+        items: sliceFive(action.payload, state.items)
       };
     case FETCH_EXPENSES:
       return {

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import "../css/app.css";
+import "./landingPage.css";
 
 const LandingPage = () => {
   return (

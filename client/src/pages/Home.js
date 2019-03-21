@@ -10,15 +10,13 @@ import "../css/app.css";
 
 class Home extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchExpenses();
   }
   onSubmit = value => {
     this.props.addExpense(value);
   };
   render() {
-    console.log(this.props);
-    const { expense, loading, auth } = this.props;
+    const { expense, loading } = this.props;
     return (
       <div className="main-app">
         <ExpenseForm onSubmit={this.onSubmit} />

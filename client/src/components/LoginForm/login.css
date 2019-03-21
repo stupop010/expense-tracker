@@ -1,5 +1,6 @@
 .login {
   position: relative;
+  text-align: center;
   width: 35%;
   height: 30em;
   left: 50%;
@@ -23,20 +24,41 @@
 }
 
 .sign-form > h1 {
-  text-align: center;
   text-decoration: underline;
   margin-top: 0.1em;
 }
 
-.log {
-  position: relative;
-  text-align: center;
-  left: 12%;
-}
 .google-link {
+  text-align: justify;
+  background: rgb(211, 72, 54);
+  height: 50px;
+  width: 70%;
+  border: none;
+  border-radius: 5px;
+}
+
+.google-link div {
   position: relative;
-  top: 2em;
-  left: 40%;
+  margin-top: 12px;
+  font-size: 1.5em;
+  color: white;
+}
+
+.break::before {
+  content: "";
+  left: 10%;
+  position: absolute;
+  height: 7px;
+  width: 33%;
+  border-bottom: 2px solid black;
+}
+.break::after {
+  content: "";
+  right: 10%;
+  position: absolute;
+  height: 7px;
+  width: 33%;
+  border-bottom: 2px solid black;
 }
 
 @keyframes comingIn {

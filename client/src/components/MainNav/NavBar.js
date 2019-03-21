@@ -26,7 +26,8 @@ class NavBar extends Component {
   };
 
   render() {
-    const { className, auth } = this.state;
+    const { auth } = this.props;
+    const { className } = this.state;
     return (
       <div className="main-nav">
         <button
@@ -63,9 +64,14 @@ class NavBar extends Component {
     );
   }
   renderAuth(auth) {
+    console.log(auth);
     switch (auth) {
       case null:
-        return;
+        return (
+          <li className="nav-item">
+            <a href="/api/logout">LogOut</a>
+          </li>
+        );
       case false:
         return (
           <li className="nav-item">
@@ -73,17 +79,13 @@ class NavBar extends Component {
           </li>
         );
       default:
-        return (
-          <li className="nav-item">
-            <a href="/api/logout">LogOut</a>
-          </li>
-        );
+        return;
     }
   }
 }
 
 NavBar.propTypes = {
-  auth: PropTypes.object
+  auth: PropTypes.any
 };
 
 function mapStateToProps(state) {

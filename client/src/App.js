@@ -7,6 +7,8 @@ import {
   Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 
 import "./css/app.css";
 
@@ -15,9 +17,12 @@ import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import ExpenseLog from "./pages/ExpenseLog";
 
 import { getUser } from "./selections/UserSelection";
 import { fetchUser } from "./action/userAction";
+
+library.add(fab);
 
 class App extends Component {
   componentDidMount() {
@@ -42,6 +47,7 @@ class App extends Component {
             />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/log" component={ExpenseLog} />
           </Switch>
         </div>
       </Router>
