@@ -18,9 +18,11 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import ExpenseLog from "./pages/ExpenseLog";
+import PrivateRoute from "./components/PrivateRoute";
 
 import { getUser } from "./selections/UserSelection";
 import { fetchUser } from "./action/userAction";
+import Log from "./components/RecentLog/Log";
 
 library.add(fab);
 
@@ -40,14 +42,21 @@ class App extends Component {
               path="/"
               render={() => (auth ? <Redirect to="/home" /> : <LandingPage />)}
             />
-            <Route
+            <PrivateRoute exact path="/home" component={Home} auth={auth} />
+            )} />
+            <PrivateRoute
               exact
-              path="/home"
-              render={routeProps => <Home {...routeProps} {...this.props} />}
+              path="/dashboard"
+              component={Dashboard}
+              auth={auth}
             />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/log" component={ExpenseLog} />
+            <Route exact path="/login" component={Login} auth={auth} />
+            <PrivateRoute
+              exact
+              path="/log"
+              component={ExpenseLog}
+              auth={auth}
+            />
           </Switch>
         </div>
       </Router>
