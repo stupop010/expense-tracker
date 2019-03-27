@@ -29,7 +29,6 @@ class ExpenseLog extends Component {
     });
   };
   render() {
-    console.log(this.props);
     return (
       <div>
         <PaginationLog {...this.props} />
