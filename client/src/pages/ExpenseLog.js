@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
+import PaginationLog from "../components/PaginationLog/PaginationLog";
+
+import {
+  getPagination,
+  paginationLoading
+} from "../selections/PaginationSelection";
 import { pagintionExpense } from "../action/expenseAction";
 
 class ExpenseLog extends Component {
@@ -22,15 +29,30 @@ class ExpenseLog extends Component {
     });
   };
   render() {
+    console.log(this.props);
     return (
       <div>
+        <PaginationLog {...this.props} />
         <button type="button" onClick={this.handleClick} />
       </div>
     );
   }
 }
 
+ExpenseLog.protoTypes = {
+  pagItems: PropTypes.array.isRequired,
+  pagLoading: PropTypes.bool.isRequired,
+  pagintionExpense: PropTypes.func.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    pagItems: getPagination(state),
+    pagLoading: paginationLoading(state)
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { pagintionExpense }
 )(ExpenseLog);

@@ -22,7 +22,6 @@ import PrivateRoute from "./components/PrivateRoute";
 
 import { getUser } from "./selections/UserSelection";
 import { fetchUser } from "./action/userAction";
-import Log from "./components/RecentLog/Log";
 
 library.add(fab);
 
@@ -43,7 +42,6 @@ class App extends Component {
               render={() => (auth ? <Redirect to="/home" /> : <LandingPage />)}
             />
             <PrivateRoute exact path="/home" component={Home} auth={auth} />
-            )} />
             <PrivateRoute
               exact
               path="/dashboard"
