@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Expense = mongoose.model("expense");
 
 const slice_reverse = require("../utils/sliceReverse");
-const ITEM_PER_PAGE = 10;
 
 module.exports = app => {
   app.post("/expense/post", async (req, res) => {
@@ -19,7 +18,7 @@ module.exports = app => {
 
     try {
       await expense.save();
-      res.status(201).send(newExpense);
+      res.status(201).send(expense);
     } catch (e) {
       res.status(400).send(e);
     }

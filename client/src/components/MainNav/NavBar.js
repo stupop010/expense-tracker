@@ -64,7 +64,6 @@ class NavBar extends Component {
     );
   }
   renderAuth(auth) {
-    console.log(auth);
     switch (auth) {
       case null:
         return (

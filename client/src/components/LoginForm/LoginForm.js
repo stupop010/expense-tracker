@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./login.css";
 
@@ -32,16 +31,18 @@ const LoginForm = props => {
         </button>
         <br />
         <p className="break">OR</p>
-        <button className="google-link">
-          <NavLink exact to="/auth/google">
+        {/* <button type="sumbit" className="google-link"> */}
+        <div className="google-link">
+          <a href="/auth/google">
             <FontAwesomeIcon
               icon={["fab", "google"]}
               size={"4x"}
               pull={"left"}
             />
             <div>Login With Google</div>
-          </NavLink>
-        </button>
+          </a>
+          {/* </button> */}
+        </div>
       </form>
     </div>
   );
