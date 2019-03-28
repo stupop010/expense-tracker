@@ -32,7 +32,6 @@
 }
 
 .wel-msg {
-  position: relative;
   right: 2%;
   top: 0;
   font-size: 1.5rem;
@@ -43,12 +42,12 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
+  .main-nav {
+    font-size: 1px;
+  }
   .wel-msg {
     display: none;
-  }
-  .main-nav li {
-    font-size: 1rem;
   }
   .main-btn {
     left: 0.5rem;
@@ -56,6 +55,9 @@
 }
 
 @media (max-width: 999px) {
+  .main-nav {
+    justify-content: flex-start;
+  }
   .wel-msg {
     display: none;
   }
@@ -67,10 +69,10 @@
 .main-btn {
   position: relative;
   border: none;
-  background: #e5e7ea;
   border-bottom: 3px solid black;
   left: 2rem;
   top: 0;
+  background: #e5e7ea;
   width: 30px;
 }
 .main-btn::before {

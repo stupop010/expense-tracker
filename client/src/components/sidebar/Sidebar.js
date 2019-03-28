@@ -26,13 +26,13 @@ const Sidebar = props => {
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/about">
-            About
+          <NavLink exact to="/log">
+            Log
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/log">
-            Log
+          <NavLink exact to="/about">
+            About
           </NavLink>
         </li>
         {renderAuth(auth)}

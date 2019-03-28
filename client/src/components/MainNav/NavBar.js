@@ -51,6 +51,11 @@ class NavBar extends Component {
               DashBoard
             </NavLink>
           </li>
+          <li>
+            <NavLink exact to="/about">
+              About
+            </NavLink>
+          </li>
           {this.renderAuth(auth)}
         </ul>
         {auth ? <div className="wel-msg">Hello {auth.username}</div> : null}
@@ -66,11 +71,7 @@ class NavBar extends Component {
   renderAuth(auth) {
     switch (auth) {
       case null:
-        return (
-          <li className="nav-item">
-            <a href="/api/logout">LogOut</a>
-          </li>
-        );
+        return;
       case false:
         return (
           <li className="nav-item">
@@ -78,7 +79,11 @@ class NavBar extends Component {
           </li>
         );
       default:
-        return;
+        return (
+          <li className="nav-item">
+            <a href="/api/logout">LogOut</a>
+          </li>
+        );
     }
   }
 }
