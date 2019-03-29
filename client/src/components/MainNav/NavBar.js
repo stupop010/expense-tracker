@@ -30,11 +30,11 @@ class NavBar extends Component {
     const { className } = this.state;
     return (
       <div className="main-nav">
-        <button
-          type="button"
-          className="main-btn toggle"
-          onClick={this.handleClick}
-        />
+        <div class="navIcon" onClick={this.handleClick}>
+          <div class="naviconUpper" />
+          <div class="innerNavicon" />
+          <div class="naviconLower" />
+        </div>
         <ul className="nav-ul">
           <li>
             <NavLink exact to="/home">

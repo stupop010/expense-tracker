@@ -1,6 +1,7 @@
 import React from "react";
 
 import ExpenseList from "../ExpenseList";
+import Button from "../Button/Button";
 import "./paginationLog.css";
 
 const PaginationLog = props => {
@@ -14,6 +15,9 @@ const PaginationLog = props => {
           </div>
         );
       })}
+      <Button type="button" className="pag-button" onClick={props.handleClick}>
+        Hello
+      </Button>
     </div>
   );
 };

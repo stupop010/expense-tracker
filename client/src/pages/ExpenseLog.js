@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import PaginationLog from "../components/PaginationLog/PaginationLog";
+import Button from "../components/Button/Button";
 
 import {
   getPagination,
@@ -31,8 +32,7 @@ class ExpenseLog extends Component {
   render() {
     return (
       <div>
-        <PaginationLog {...this.props} />
-        <button type="button" onClick={this.handleClick} />
+        <PaginationLog {...this.props} handleClick={this.handleClick} />
       </div>
     );
   }

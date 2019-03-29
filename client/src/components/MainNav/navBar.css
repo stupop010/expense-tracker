@@ -31,8 +31,6 @@
 }
 
 .wel-msg {
-  right: 2%;
-  top: 0;
   font-size: 1.5rem;
   margin: 0.4rem;
 }
@@ -42,8 +40,8 @@
 }
 
 @media screen and (max-width: 600px) {
-  .main-nav {
-    font-size: 1px;
+  .nav-ul {
+    display: none;
   }
   .wel-msg {
     display: none;
@@ -65,30 +63,36 @@
   }
 }
 
-.main-btn {
-  position: relative;
-  border: none;
-  border-bottom: 3px solid black;
-  left: 2rem;
-  top: 0;
-  background: #e5e7ea;
+.navIcon {
+  margin-left: 20px;
+  margin-top: 11px;
+  width: 30px;
+  height: 20px;
+}
+.navIcon > * {
   width: 30px;
 }
-.main-btn::before {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 30px;
-  left: 0;
-  bottom: 3px;
-  border-bottom: 3px solid black;
+
+.navIcon:hover {
+  cursor: pointer;
 }
-.main-btn::after {
-  position: absolute;
-  content: "";
-  height: 10px;
-  width: 30px;
-  left: 0;
-  top: 9px;
+
+.naviconUpper {
   border-top: 3px solid black;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.innerNavicon {
+  margin-top: 5px;
+  border-top: 3px solid black;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.naviconLower {
+  border-bottom: 3px solid black;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 5px;
 }
