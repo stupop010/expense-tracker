@@ -6,10 +6,15 @@
 }
 .pag-card {
   text-align: center;
-  background: red;
+  background: #cdd2db;
   width: 70%;
-  margin: 0 auto;
-  border: 2px solid black;
+  margin: 3px auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  animation-name: pag-inc;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  /* animation-fill-mode: forwards; */
 }
 
 .pag-card ul {
@@ -19,4 +24,30 @@
 .pag-card ul li {
   display: inline;
   margin: 1rem;
+}
+
+.pag-button {
+  margin: 7px auto;
+  text-align: center;
+  background: #9fa9bb;
+  font-size: 20px;
+  width: 25%;
+  height: 50px;
+  border-radius: 35px;
+  transition-duration: 400ms;
+  transition-property: background-color, color;
+}
+.pag-button:hover {
+  color: white;
+  cursor: pointer;
+  background: #5f6570;
+}
+
+@keyframes pag-inc {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
 }

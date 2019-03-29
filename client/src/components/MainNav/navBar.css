@@ -21,6 +21,8 @@
   color: black;
 }
 .main-nav .nav-ul a {
+  transition-duration: 400ms;
+  transition-property: color;
   color: #666;
   text-decoration: none;
 }
@@ -35,10 +37,6 @@
   margin: 0.4rem;
 }
 
-.main-nav > button:hover {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 600px) {
   .nav-ul {
     display: none;
@@ -51,7 +49,7 @@
   }
 }
 
-@media (max-width: 999px) {
+@media screen and (max-width: 999px) {
   .main-nav {
     justify-content: flex-start;
   }
@@ -77,22 +75,28 @@
   cursor: pointer;
 }
 
+.navIcon {
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .naviconUpper {
   border-top: 3px solid black;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 200ms;
 }
 
 .innerNavicon {
   margin-top: 5px;
   border-top: 3px solid black;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 300ms;
 }
 
 .naviconLower {
   border-bottom: 3px solid black;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 300ms;
   margin-top: 5px;
 }

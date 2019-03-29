@@ -35,6 +35,8 @@
   border-radius: 3px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
   cursor: pointer;
+  transition-duration: 400ms;
+  transition-property: background-color, color;
 }
 .form-button:hover,
 .form-button:active {
