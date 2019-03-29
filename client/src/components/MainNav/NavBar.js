@@ -30,10 +30,10 @@ class NavBar extends Component {
     const { className } = this.state;
     return (
       <div className="main-nav">
-        <div class="navIcon" onClick={this.handleClick}>
-          <div class="naviconUpper" />
-          <div class="innerNavicon" />
-          <div class="naviconLower" />
+        <div className="navIcon" onClick={this.handleClick}>
+          <div className="naviconUpper" />
+          <div className="innerNavicon" />
+          <div className="naviconLower" />
         </div>
         <ul className="nav-ul">
           <li>

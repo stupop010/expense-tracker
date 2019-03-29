@@ -21,7 +21,7 @@ export const fetchExpenses = () => async dispatch => {
 
 // Fetch Pagintion Expense
 export const pagintionExpense = limit => async dispatch => {
-  const res = await axios.get(`/expense/all`, {
+  const res = await axios.get("/expense/all", {
     params: {
       limit
     }

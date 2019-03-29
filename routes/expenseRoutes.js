@@ -6,6 +6,7 @@ const slice_reverse = require("../utils/sliceReverse");
 
 module.exports = app => {
   app.post("/expense/post", async (req, res) => {
+    console.log("hello");
     const { price, description, categries } = req.body;
 
     const expense = new Expense({
@@ -37,7 +38,6 @@ module.exports = app => {
 
   // Route to Pagination
   app.get("/expense/all", async (req, res) => {
-    console.log(req);
     try {
       const expense = await Expense.find()
         .sort({ date: -1 })

@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { login } from "../action/userAction";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 class Login extends Component {
@@ -9,6 +13,12 @@ class Login extends Component {
   };
   handleSubmit = e => {
     e.preventDefault();
+    const { email, password } = this.state;
+    const user = {
+      email,
+      password
+    };
+    this.props.login(user);
   };
 
   render() {
@@ -21,4 +31,11 @@ class Login extends Component {
   }
 }
 
-export default Login;
+Login.protoTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { login }
+)(Login);

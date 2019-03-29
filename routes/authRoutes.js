@@ -1,6 +1,11 @@
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const User = require("../models/User");
 
 module.exports = app => {
+  // Google Auth
   app.get(
     "/auth/google",
     passport.authenticate("google", {

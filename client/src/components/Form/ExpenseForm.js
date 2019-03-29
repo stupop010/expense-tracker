@@ -16,14 +16,15 @@ class ExpenseForm extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
+    const { categries, price, description } = this.state;
     const value = {
-      categries: this.state.categries,
-      price: this.state.price,
-      description: this.state.description
+      categries,
+      price,
+      description
     };
     this.props.onSubmit(value);
     this.onClear();
-    e.preventDefault();
   };
 
   render() {
