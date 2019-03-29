@@ -31,18 +31,10 @@ const LoginForm = props => {
         </button>
         <br />
         <p className="break">OR</p>
-        {/* <button type="sumbit" className="google-link"> */}
-        <div className="google-link">
-          <a href="/auth/google">
-            <FontAwesomeIcon
-              icon={["fab", "google"]}
-              size={"4x"}
-              pull={"left"}
-            />
-            <div>Login With Google</div>
-          </a>
-          {/* </button> */}
-        </div>
+        <a href="/auth/google" className="google-link">
+          <FontAwesomeIcon icon={["fab", "google"]} size={"4x"} pull={"left"} />
+          <span>Login With Google</span>
+        </a>
       </form>
     </div>
   );

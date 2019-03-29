@@ -1,5 +1,22 @@
+.pag-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5%;
+}
 .pag-card {
+  text-align: center;
   background: red;
   width: 70%;
-  height: 40%;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+
+.pag-card ul {
+  list-style: none;
+}
+
+.pag-card ul li {
+  display: inline;
+  margin: 1rem;
 }

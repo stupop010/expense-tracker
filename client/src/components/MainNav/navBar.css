@@ -1,7 +1,6 @@
 .main-nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-direction: row;
   padding: 1rem 0;
   background: #e5e7ea;

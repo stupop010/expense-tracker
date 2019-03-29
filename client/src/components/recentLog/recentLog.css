@@ -1,25 +1,23 @@
 .card-contaniner {
-  position: relative;
-  width: 55%;
-  max-width: 100%;
-  margin: 4rem auto;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .card {
-  position: relative;
+  text-align: center;
   height: 3em;
-  padding-top: 1.3em;
-  margin: 0.2em;
+  width: 55%;
+  margin: 2px auto;
   border: 1px solid black;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
 }
 .header {
+  text-align: center;
   margin: 0.5em;
 }
 
 .card > ul {
   list-style: none;
-  display: inline;
 }
 .card > ul > li {
   display: inline;

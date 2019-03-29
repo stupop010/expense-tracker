@@ -1,15 +1,16 @@
 import React from "react";
+
+import ExpenseList from "../ExpenseList";
 import "./paginationLog.css";
 
 const PaginationLog = props => {
   const items = props.pagItems;
-  console.log(props);
   return (
-    <div>
+    <div className="pag-body">
       {items.map(item => {
         return (
           <div key={item._id} className="pag-card">
-            <p>{item.price}</p>
+            <ExpenseList expense={item} />
           </div>
         );
       })}

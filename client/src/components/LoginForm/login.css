@@ -31,17 +31,17 @@
 .google-link {
   position: absolute;
   left: 13%;
-  text-align: justify;
+  text-align: center;
   background: rgb(211, 72, 54);
   height: 65px;
   width: 70%;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-.google-link div {
+.google-link span {
   position: relative;
-  margin-top: 12px;
+  top: 15px;
   font-size: 1.5em;
   color: white;
 }
