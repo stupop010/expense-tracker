@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import PaginationLog from "../components/PaginationLog/PaginationLog";
-import Button from "../components/Button/Button";
 
 import {
   getPagination,

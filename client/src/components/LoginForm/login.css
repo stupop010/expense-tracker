@@ -42,7 +42,7 @@
 .google-link span {
   position: relative;
   top: 15px;
-  font-size: 1.5em;
+  font-size: 20px;
   color: white;
 }
 
@@ -69,8 +69,15 @@
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .login {
+    background: red;
     width: 75%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 950px) {
+  .login {
+    width: 60%;
   }
 }
