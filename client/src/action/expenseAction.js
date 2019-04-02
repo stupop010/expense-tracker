@@ -14,9 +14,19 @@ export const addExpense = item => async dispatch => {
 
 // Fetch All Expense
 export const fetchExpenses = () => async dispatch => {
-  dispatch({ type: IS_FETCHING });
-  const res = await axios.get("expense/get_5");
-  dispatch({ type: FETCH_EXPENSES, payload: res.data });
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+  try {
+    dispatch({ type: IS_FETCHING });
+    const res = await axios.get("/expense/get_5", config);
+    dispatch({ type: FETCH_EXPENSES, payload: res.data });
+  } catch (e) {
+    // dispatch({ type: FETCH_})
+    console.log(e.response.data);
+  }
 };
 
 // Fetch Pagintion Expense
