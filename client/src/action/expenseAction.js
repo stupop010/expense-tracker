@@ -31,6 +31,11 @@ export const fetchExpenses = () => async dispatch => {
 
 // Fetch Pagintion Expense
 export const pagintionExpense = limit => async dispatch => {
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
   const res = await axios.get("/expense/all", {
     params: {
       limit

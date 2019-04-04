@@ -18,9 +18,9 @@ module.exports = app => {
 
     try {
       await expense.save();
-      res.status(201).send(expense);
+      res.status(201).json(expense);
     } catch (e) {
-      res.status(400).send(e);
+      res.status(400).json({ message: "Error" });
     }
   });
 
@@ -31,11 +31,12 @@ module.exports = app => {
       const revExpense = slice_reverse(expense);
       if (_.isEmpty(revExpense)) {
         res.status(400).json({ message: "No expense to show." });
+      } else {
+        res.json(revExpense);
       }
-      res.send(revExpense);
     } catch (e) {
       console.log(e);
-      res.send(e);
+      //res.json({ message: "Error" });
     }
   });
 
