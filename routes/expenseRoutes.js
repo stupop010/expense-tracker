@@ -18,7 +18,7 @@ module.exports = app => {
 
     try {
       await expense.save();
-      res.status(201).json(expense);
+      res.status(201).send(expense);
     } catch (e) {
       res.status(400).json({ message: "Error" });
     }
@@ -27,16 +27,19 @@ module.exports = app => {
   // Route to get the 5 most recent
   app.get("/expense/get_5", async (req, res) => {
     try {
-      const expense = await Expense.find({ _user: req.user.id });
+      // {
+      //   _user: req.user.id;
+      // }
+      const expense = await Expense.find();
       const revExpense = slice_reverse(expense);
+      // throw Error;
       if (_.isEmpty(revExpense)) {
         res.status(400).json({ message: "No expense to show." });
       } else {
         res.json(revExpense);
       }
     } catch (e) {
-      console.log(e);
-      //res.json({ message: "Error" });
+      res.json({ message: "Error" });
     }
   });
 

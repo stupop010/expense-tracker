@@ -22,6 +22,7 @@ export const fetchExpenses = () => async dispatch => {
   try {
     dispatch({ type: IS_FETCHING });
     const res = await axios.get("/expense/get_5", config);
+    console.log(res);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
     // dispatch({ type: FETCH_})
@@ -36,7 +37,7 @@ export const pagintionExpense = limit => async dispatch => {
       "Content-type": "application/json"
     }
   };
-  const res = await axios.get("/expense/all", {
+  const res = await axios.get("/expense/all", config, {
     params: {
       limit
     }
