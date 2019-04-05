@@ -5,7 +5,7 @@ import ExpenseList from "../ExpenseList";
 import "./recentLog.css";
 
 const Log = props => {
-  const { expense } = props;
+  const { expense, error } = props;
   return (
     <>
       <h1 className="header">Recent Expenses</h1>

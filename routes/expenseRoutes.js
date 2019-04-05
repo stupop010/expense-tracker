@@ -20,7 +20,7 @@ module.exports = app => {
       await expense.save();
       res.status(201).send(expense);
     } catch (e) {
-      res.status(400).json({ message: "Error" });
+      res.status(400).json({ msg: "Failed" });
     }
   });
 
@@ -32,14 +32,14 @@ module.exports = app => {
       // }
       const expense = await Expense.find();
       const revExpense = slice_reverse(expense);
-      // throw Error;
+      throw Error;
       if (_.isEmpty(revExpense)) {
         res.status(400).json({ message: "No expense to show." });
       } else {
         res.json(revExpense);
       }
     } catch (e) {
-      res.json({ message: "Error" });
+      res.status(400).json({ msg: "Error" });
     }
   });
 
@@ -52,7 +52,9 @@ module.exports = app => {
         .skip(parseInt(req.query.skip));
       res.json(expense);
     } catch (e) {
-      res.send();
+      res.status(400).json({
+        msg: "Can't not retrieve expense"
+      });
     }
   });
 };

@@ -1,7 +1,8 @@
 import {
   ADD_EXPENSE,
   FETCH_EXPENSES,
-  IS_FETCHING
+  IS_FETCHING,
+  FETCH_EXPENSES_FAILED
 } from "../constants/actionTypes";
 import { sliceFive } from "../utils/sliceFive";
 
@@ -28,6 +29,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isLoading: true
+      };
+    case FETCH_EXPENSES_FAILED:
+      return {
+        ...state,
+        items: [],
+        isLoading: false
       };
     default:
       return state;

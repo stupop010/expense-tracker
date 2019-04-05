@@ -10,7 +10,6 @@ import "../css/app.css";
 
 class Home extends Component {
   componentDidMount() {
-    console.log("hi");
     this.props.fetchExpenses();
   }
   onSubmit = value => {
@@ -21,13 +20,14 @@ class Home extends Component {
     return (
       <div className="main-app">
         <ExpenseForm onSubmit={this.onSubmit} />
-        {/* <RecentLog expense={expense} loading={loading} /> */}
+        <RecentLog expense={expense} loading={loading} />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
+  //console.log(state);
   return { expense: getExpense(state), loading: getLoading(state) };
 }
 

@@ -1,9 +1,11 @@
 import axios from "axios";
+import { returnError } from "./errorAction";
 import {
   ADD_EXPENSE,
   FETCH_EXPENSES,
   IS_FETCHING,
-  FETCH_PAGINATION_EXPENSE
+  FETCH_PAGINATION_EXPENSE,
+  FETCH_EXPENSES_FAILED
 } from "../constants/actionTypes";
 
 // Add expense
@@ -22,11 +24,10 @@ export const fetchExpenses = () => async dispatch => {
   try {
     dispatch({ type: IS_FETCHING });
     const res = await axios.get("/expense/get_5", config);
-    console.log(res);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
-    // dispatch({ type: FETCH_})
-    console.log(e.response.data);
+    dispatch(returnError(e.response.data, e.response.status));
+    dispatch({ type: FETCH_EXPENSES_FAILED });
   }
 };
 
