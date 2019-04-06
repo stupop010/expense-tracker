@@ -26,7 +26,9 @@ export const fetchExpenses = () => async dispatch => {
     const res = await axios.get("/expense/get_5", config);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
-    dispatch(returnError(e.response.data, e.response.status));
+    dispatch(
+      returnError(e.response.data, e.response.status, "FETCH_EXPENSES_FAILED")
+    );
     dispatch({ type: FETCH_EXPENSES_FAILED });
   }
 };

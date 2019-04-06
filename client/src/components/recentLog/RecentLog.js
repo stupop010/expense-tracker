@@ -11,8 +11,20 @@ class RecentLog extends Component {
   state = {
     msg: null
   };
+
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    if (error !== prevProps.error) {
+      if (error.id === "FETCH_EXPENSES_FAILED") {
+        this.setState({ msg: error.msg.msg });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+  }
+
   render() {
-    const { expense, loading, error } = this.props;
+    const { expense, loading } = this.props;
     return (
       <div className="card-contaniner">
         {loading ? (

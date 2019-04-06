@@ -9,6 +9,7 @@ const Log = props => {
   return (
     <>
       <h1 className="header">Recent Expenses</h1>
+      {error ? <h2 className="header error">{error}</h2> : null}
       {expense.map(item => (
         <div key={item._id} className="card card-anim">
           <ExpenseList expense={item} />

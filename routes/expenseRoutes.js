@@ -27,19 +27,15 @@ module.exports = app => {
   // Route to get the 5 most recent
   app.get("/expense/get_5", async (req, res) => {
     try {
-      // {
-      //   _user: req.user.id;
-      // }
-      const expense = await Expense.find();
+      const expense = await Expense.find({ _user: req.user.id });
       const revExpense = slice_reverse(expense);
-      throw Error;
       if (_.isEmpty(revExpense)) {
-        res.status(400).json({ message: "No expense to show." });
+        res.status(400).json({ msg: "No expense to show" });
       } else {
         res.json(revExpense);
       }
     } catch (e) {
-      res.status(400).json({ msg: "Error" });
+      res.status(400).json({ msg: "Can't fetch expenses" });
     }
   });
 

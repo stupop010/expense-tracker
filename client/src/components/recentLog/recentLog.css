@@ -18,6 +18,10 @@
   margin: 0.5em;
 }
 
+.error {
+  color: red;
+}
+
 .card > ul {
   list-style: none;
 }
