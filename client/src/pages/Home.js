@@ -18,7 +18,7 @@ class Home extends Component {
   render() {
     const { expense, loading } = this.props;
     return (
-      <div className="main-app">
+      <div>
         <ExpenseForm onSubmit={this.onSubmit} />
         <RecentLog expense={expense} loading={loading} />
       </div>
@@ -27,7 +27,6 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  //console.log(state);
   return { expense: getExpense(state), loading: getLoading(state) };
 }
 

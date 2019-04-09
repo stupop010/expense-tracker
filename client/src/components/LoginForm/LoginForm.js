@@ -32,7 +32,7 @@ const LoginForm = props => {
         <br />
         <p className="break">OR</p>
         <a href="/auth/google" className="google-link">
-          <FontAwesomeIcon icon={["fab", "google"]} size={"4x"} pull={"left"} />
+          <FontAwesomeIcon icon={["fab", "google"]} size={"2x"} />
           <span>Login With Google</span>
         </a>
       </form>

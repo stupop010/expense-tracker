@@ -33,31 +33,35 @@ class App extends Component {
     const { auth } = this.props;
     return (
       <Router>
-        <div className="main-app">
+        <>
           <NavBar />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (auth ? <Redirect to="/home" /> : <LandingPage />)}
-            />
-            {/* <PrivateRoute exact path="/home" component={Home} auth={auth} /> */}
-            <PrivateRoute
-              exact
-              path="/dashboard"
-              component={Dashboard}
-              auth={auth}
-            />
-            <Route exact path="/login" component={Login} auth={auth} />
-            <Route exact path="/home" component={Home} auth={auth} />
-            <PrivateRoute
-              exact
-              path="/log"
-              component={ExpenseLog}
-              auth={auth}
-            />
-          </Switch>
-        </div>
+          <div className="main-app">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  auth ? <Redirect to="/home" /> : <LandingPage />
+                }
+              />
+              {/* <PrivateRoute exact path="/home" component={Home} auth={auth} /> */}
+              <PrivateRoute
+                exact
+                path="/dashboard"
+                component={Dashboard}
+                auth={auth}
+              />
+              <Route exact path="/login" component={Login} auth={auth} />
+              <Route exact path="/home" component={Home} auth={auth} />
+              <PrivateRoute
+                exact
+                path="/log"
+                component={ExpenseLog}
+                auth={auth}
+              />
+            </Switch>
+          </div>
+        </>
       </Router>
     );
   }

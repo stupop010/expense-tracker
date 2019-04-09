@@ -6,3 +6,4 @@ export const FETCH_EXPENSES_FAILED = "fetch_expenses_failed";
 export const FETCH_PAGINATION_EXPENSE = "fetch_pagination_expense";
 export const USER_LOADING = "user_loading";
 export const GET_ERROR = "get_error";
+export const CLEAR_ERROR = "clear_error";
