@@ -33,6 +33,7 @@
   width: 25%;
   height: 50px;
   border-radius: 35px;
+  border: none;
   box-shadow: 2px 2px 1px #888888;
   transition-duration: 400ms;
   transition-property: background-color, color;

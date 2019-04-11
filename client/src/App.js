@@ -18,6 +18,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import ExpenseLog from "./pages/ExpenseLog";
+import Register from "./pages/Register";
 import PrivateRoute from "./components/PrivateRoute";
 
 import { getUser } from "./selections/UserSelection";
@@ -52,6 +53,7 @@ class App extends Component {
                 auth={auth}
               />
               <Route exact path="/login" component={Login} auth={auth} />
+              <Route exact path="/register" component={Register} auth={auth} />
               <Route exact path="/home" component={Home} auth={auth} />
               <PrivateRoute
                 exact

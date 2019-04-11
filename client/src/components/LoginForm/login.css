@@ -1,7 +1,7 @@
 .login {
   position: relative;
   display: flex;
-  width: 35%;
+  width: 20%;
   height: 30em;
   top: 10%;
   background: rgba(102, 102, 102, 0.5);
@@ -82,8 +82,8 @@
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 950px) {
+@media screen and (min-width: 600px) and (max-width: 1300px) {
   .login {
-    width: 60%;
+    width: 50%;
   }
 }

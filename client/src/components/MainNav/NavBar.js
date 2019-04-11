@@ -58,7 +58,7 @@ class NavBar extends Component {
           </li>
           {this.renderAuth(auth)}
         </ul>
-        {auth ? <div className="wel-msg">Hello {auth.username}</div> : null}
+        {auth ? <div className="wel-msg">Hello {auth.username}</div> : <div />}
 
         <Sidebar
           handleClickClose={this.handleClickClose}

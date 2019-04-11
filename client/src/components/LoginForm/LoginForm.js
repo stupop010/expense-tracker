@@ -7,11 +7,9 @@ const LoginForm = props => {
     <div className="login">
       <form onSubmit={props.handleSubmit} className="sign-form">
         <h1>Sign In</h1>
-        <div>
-          <div className="form-group">
-            <label>Email:</label>
-            <input type="email" name="email" onChange={props.handleChange} />
-          </div>
+        <div className="form-group">
+          <label>Email:</label>
+          <input type="email" name="email" onChange={props.handleChange} />
         </div>
         <div className="form-group">
           <label>Password:</label>
@@ -26,8 +24,12 @@ const LoginForm = props => {
         <button type="submit" className="form-button">
           Sumbit
         </button>
-        <button type="submit" className="form-button">
-          Resigter
+        <button
+          type="button"
+          className="form-button"
+          onClick={props.handleRegister}
+        >
+          Register
         </button>
         <br />
         <p className="break">OR</p>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { login } from "../action/userAction";
+import { userLogin } from "../action/userAction";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 class Login extends Component {
@@ -18,24 +18,28 @@ class Login extends Component {
       email,
       password
     };
-    this.props.login(user);
+    this.props.userLogin(user);
   };
-
+  handleRegister = () => {
+    let path = `/register`;
+    this.props.history.push(path);
+  };
   render() {
     return (
       <LoginForm
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
+        handleRegister={this.handleRegister}
       />
     );
   }
 }
 
 Login.protoTypes = {
-  login: PropTypes.func.isRequired
+  userLogin: PropTypes.func.isRequired
 };
 
 export default connect(
   null,
-  { login }
+  { userLogin }
 )(Login);
