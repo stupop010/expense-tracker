@@ -1,6 +1,6 @@
 .loader {
-  position: absolute;
-  width: 25%;
+  position: relative;
+  width: 13%;
   height: 25%;
   top: 50%;
   left: 50%;
@@ -13,28 +13,34 @@
   height: 70px;
   background: black;
 }
-.box1 {
-  left: 0%;
-  animation: loading 1s linear 0s infinite forwards;
-}
-.box2 {
-  left: 30%;
-  animation: loading 1s linear 100ms infinite forwards;
-}
-.box3 {
-  left: 60%;
-  animation: loading 1s linear 200ms infinite forwards;
+.loader > h2 {
+  position: relative;
+  top: 3.5em;
 }
 .box4 {
+  left: 0%;
+  animation: loading 2s linear 0s infinite forwards;
+}
+.box3 {
+  left: 30%;
+  animation: loading 2s linear 300ms infinite forwards;
+}
+.box2 {
+  left: 60%;
+  animation: loading 2s linear 600ms infinite forwards;
+}
+.box1 {
   left: 90%;
-  animation: loading 1s linear 300ms infinite forwards;
+  animation: loading 2s linear 900ms infinite forwards;
 }
 
 @keyframes loading {
   0% {
-    transform: scale(1);
+    transform: scale(0.1);
+    opacity: 0.1;
   }
   100% {
-    transform: scale(0.1);
+    transform: scale(1);
+    opacity: 1;
   }
 }

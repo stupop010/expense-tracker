@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import PaginationLog from "../components/PaginationLog/PaginationLog";
-
+import "../css/app.css";
 import {
   getPagination,
   paginationLoading
@@ -30,7 +30,7 @@ class ExpenseLog extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="expense-container">
         <PaginationLog {...this.props} handleClick={this.handleClick} />
       </div>
     );

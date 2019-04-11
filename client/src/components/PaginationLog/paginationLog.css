@@ -33,6 +33,7 @@
   width: 25%;
   height: 50px;
   border-radius: 35px;
+  box-shadow: 2px 2px 1px #888888;
   transition-duration: 400ms;
   transition-property: background-color, color;
 }
@@ -40,6 +41,7 @@
   color: white;
   cursor: pointer;
   background: #5f6570;
+  border: solid 1px black;
 }
 
 @keyframes pag-inc {

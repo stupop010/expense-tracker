@@ -3,14 +3,12 @@
   display: flex;
   width: 35%;
   height: 30em;
-  left: 50%;
-  top: 20em;
-  transform: translate(-50%, -50%);
+  top: 10%;
   background: rgba(102, 102, 102, 0.5);
   border: 2px solid black;
   box-shadow: 10px 10px 8px #888888;
-  transform-origin: left top;
-  animation: comingIn 300ms ease-in-out 0s 1 forwards;
+  transform-origin: right;
+  animation: comingIn 400ms ease-in-out 0s 1 forwards;
 }
 .sign-form {
   text-align: center;
@@ -70,7 +68,10 @@
 
 @keyframes comingIn {
   0% {
-    transform: translate(0, -150%);
+    transform: translate(-150%);
+  }
+  90% {
+    transform: translate(5%);
   }
 }
 
