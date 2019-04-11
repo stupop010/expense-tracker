@@ -40,7 +40,7 @@ class RecentLog extends Component {
     return (
       <div className="card-contaniner">
         {loading ? (
-          <Loader sentence={"Expenses"} />
+          <Loader />
         ) : (
           <Log expense={expense} error={this.state.msg} />
         )}
