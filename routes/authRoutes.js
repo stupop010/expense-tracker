@@ -1,4 +1,6 @@
 const passport = require("passport");
+
+const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -26,7 +28,7 @@ module.exports = app => {
     res.redirect("/");
   });
 
-  app.get("/api/user", (req, res) => {
+  app.get("/api/user", auth, (req, res) => {
     res.send(req.user);
   });
 };

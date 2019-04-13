@@ -17,21 +17,21 @@
   position: relative;
   top: 3.5em;
 }
-.box4 {
+.box1 {
   left: 0%;
   animation: loading 2s linear 0s infinite forwards;
 }
-.box3 {
-  left: 30%;
-  animation: loading 2s linear 300ms infinite forwards;
-}
 .box2 {
-  left: 60%;
-  animation: loading 2s linear 600ms infinite forwards;
+  left: 30%;
+  animation: loading 2s linear 100ms infinite forwards;
 }
-.box1 {
+.box3 {
+  left: 60%;
+  animation: loading 2s linear 200ms infinite forwards;
+}
+.box4 {
   left: 90%;
-  animation: loading 2s linear 900ms infinite forwards;
+  animation: loading 2s linear 300ms infinite forwards;
 }
 
 @keyframes loading {

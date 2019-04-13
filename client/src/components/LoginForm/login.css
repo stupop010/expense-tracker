@@ -68,10 +68,10 @@
 
 @keyframes comingIn {
   0% {
-    transform: translate(-150%);
+    transform: translate(-100em);
   }
   90% {
-    transform: translate(5%);
+    transform: translate(2em);
   }
 }
 

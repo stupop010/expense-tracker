@@ -31,7 +31,7 @@ class App extends Component {
     this.props.fetchUser();
   }
   render() {
-    const { auth } = this.props;
+    const { user } = this.props.auth;
     return (
       <Router>
         <>
@@ -42,7 +42,7 @@ class App extends Component {
                 exact
                 path="/"
                 render={() =>
-                  auth ? <Redirect to="/home" /> : <LandingPage />
+                  user ? <Redirect to="/home" /> : <LandingPage />
                 }
               />
               {/* <PrivateRoute exact path="/home" component={Home} auth={auth} /> */}
@@ -50,16 +50,16 @@ class App extends Component {
                 exact
                 path="/dashboard"
                 component={Dashboard}
-                auth={auth}
+                auth={user}
               />
-              <Route exact path="/login" component={Login} auth={auth} />
-              <Route exact path="/register" component={Register} auth={auth} />
-              <Route exact path="/home" component={Home} auth={auth} />
+              <Route exact path="/login" component={Login} auth={user} />
+              <Route exact path="/register" component={Register} auth={user} />
+              <Route exact path="/home" component={Home} auth={user} />
               <PrivateRoute
                 exact
                 path="/log"
                 component={ExpenseLog}
-                auth={auth}
+                auth={user}
               />
             </Switch>
           </div>

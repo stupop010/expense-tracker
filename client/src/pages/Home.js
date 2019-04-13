@@ -18,7 +18,7 @@ class Home extends Component {
   render() {
     const { expense, loading } = this.props;
     return (
-      <div class="home-container">
+      <div className="home-container">
         <ExpenseForm onSubmit={this.onSubmit} />
         <RecentLog expense={expense} loading={loading} />
       </div>

@@ -26,7 +26,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { auth } = this.props;
+    const { user } = this.props.auth;
     const { className } = this.state;
     return (
       <div className="main-nav">
@@ -56,20 +56,20 @@ class NavBar extends Component {
               About
             </NavLink>
           </li>
-          {this.renderAuth(auth)}
+          {this.renderAuth(user)}
         </ul>
-        {auth ? <div className="wel-msg">Hello {auth.username}</div> : <div />}
+        {user ? <div className="wel-msg">Hello {user.username}</div> : <div />}
 
         <Sidebar
           handleClickClose={this.handleClickClose}
           className={className}
-          auth={auth}
+          auth={user}
         />
       </div>
     );
   }
-  renderAuth(auth) {
-    switch (auth) {
+  renderAuth(user) {
+    switch (user) {
       case null:
         return;
       case false:

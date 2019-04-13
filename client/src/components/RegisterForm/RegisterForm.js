@@ -8,7 +8,7 @@ const RegisterForm = props => {
         <h1>Register</h1>
         <div className="form-group">
           <label>Username:</label>
-          <input type="text" name="email" onChange={props.handleChange} />
+          <input type="text" name="username" onChange={props.handleChange} />
         </div>
         <div className="form-group">
           <label>Email:</label>

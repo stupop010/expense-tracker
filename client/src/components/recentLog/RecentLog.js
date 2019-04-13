@@ -23,7 +23,7 @@ class RecentLog extends Component {
         this.setState({ msg: null, error: false });
       }
     }
-    console.log(expense.length);
+
     if (!expense.length === 0) {
       console.log("hello");
       this.clearError();

@@ -6,7 +6,6 @@ import "./sidebar.css";
 
 const Sidebar = props => {
   const { className, handleClickClose, auth } = props;
-  console.log(props);
   return (
     <div className={className}>
       <button
