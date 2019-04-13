@@ -4,7 +4,8 @@ import {
   FETCH_USER,
   USER_LOADING,
   REGISTER_SUCCESS,
-  REGISTER_FAIL
+  REGISTER_FAIL,
+  LOGOUT_SUCCESS
 } from "../constants/actionTypes";
 
 export const fetchUser = () => async (dispatch, getState) => {
@@ -31,6 +32,12 @@ export const registerUser = body => async dispatch => {
       type: REGISTER_FAIL
     });
   }
+};
+
+export const logOut = dispatch => {
+  return {
+    type: LOGOUT_SUCCESS
+  };
 };
 
 export const tokenConfig = getState => {

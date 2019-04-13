@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { getUser } from "../../selections/UserSelection";
 import Sidebar from "../Sidebar/Sidebar";
-
+import LogOut from "../LogOut";
 import "./navBar.css";
 
 class NavBar extends Component {
@@ -81,7 +81,7 @@ class NavBar extends Component {
       default:
         return (
           <li className="nav-item">
-            <a href="/api/logout">LogOut</a>
+            <LogOut />
           </li>
         );
     }

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
+import LogOut from "../LogOut";
 import "./sidebar.css";
 
 const Sidebar = props => {
@@ -34,12 +35,12 @@ const Sidebar = props => {
             About
           </NavLink>
         </li>
-        {renderAuth(auth)}
+        {renderAuth(auth, props.logOut)}
       </ul>
     </div>
   );
 };
-const renderAuth = auth => {
+const renderAuth = (auth, logOut) => {
   switch (auth) {
     case null:
       return;
@@ -52,7 +53,7 @@ const renderAuth = auth => {
     default:
       return (
         <li className="nav-item">
-          <a href="/api/logout">LogOut</a>
+          <LogOut />
         </li>
       );
   }

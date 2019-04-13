@@ -10,6 +10,14 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 class Register extends Component {
   state = { username: "", email: "", password: "" };
 
+  componentDidUpdate(prevProps) {
+    const { isAuthenticated } = this.props;
+    if (isAuthenticated !== prevProps.isAuthenticated) {
+      if (isAuthenticated) {
+        this.props.history.push("/");
+      }
+    }
+  }
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };

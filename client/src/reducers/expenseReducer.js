@@ -22,8 +22,8 @@ export default function(state = initialState, action) {
     case FETCH_EXPENSES:
       return {
         ...state,
-        isLoading: true
-        // items: action.payload
+        isLoading: false,
+        items: action.payload
       };
     case IS_FETCHING:
       return {
