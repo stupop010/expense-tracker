@@ -1,10 +1,11 @@
 const passport = require("passport");
+const mongoose = require("mongoose");
 
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/User");
+const User = mongoose.model("users");
 
 module.exports = app => {
   // Google Auth
@@ -29,6 +30,10 @@ module.exports = app => {
   });
 
   app.get("/api/user", auth, (req, res) => {
-    res.send(req.user);
+    User.findById(req.user.id)
+      .select("-password")
+      .then(user => {
+        res.send(user);
+      });
   });
 };

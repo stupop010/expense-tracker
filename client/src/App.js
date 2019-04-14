@@ -45,7 +45,7 @@ class App extends Component {
                   user ? <Redirect to="/home" /> : <LandingPage />
                 }
               />
-              {/* <PrivateRoute exact path="/home" component={Home} auth={auth} /> */}
+              <PrivateRoute exact path="/home" component={Home} auth={user} />
               <PrivateRoute
                 exact
                 path="/dashboard"
@@ -54,7 +54,7 @@ class App extends Component {
               />
               <Route exact path="/login" component={Login} auth={user} />
               <Route exact path="/register" component={Register} auth={user} />
-              <Route exact path="/home" component={Home} auth={user} />
+              {/* <Route exact path="/home" component={Home} auth={user} /> */}
               <PrivateRoute
                 exact
                 path="/log"
