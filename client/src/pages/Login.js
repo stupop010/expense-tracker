@@ -7,11 +7,20 @@ import { errorMessage } from "../selections/ErrorSelection";
 import { userLogin } from "../action/userAction";
 import { clearErrors } from "../action/errorAction";
 import LoginForm from "../components/LoginForm/LoginForm";
+import { isNullOrUndefined } from "util";
 
 class Login extends Component {
-  state = { email: "", password: "" };
+  state = { email: "", password: "", msg: isNullOrUndefined };
   componentDidUpdate(prevProps) {
     const { isAuthenticated, error } = this.props;
+
+    if (error !== prevProps.error) {
+      if ((error.id = "LOGIN_USER_FAILED")) {
+        this.setState({ msg: error.msg });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
     if (isAuthenticated !== prevProps.isAuthenticated) {
       if (isAuthenticated) {
         this.props.clearErrors();
@@ -29,7 +38,6 @@ class Login extends Component {
       email,
       password
     };
-    console.log("yes i have clicked!!!");
     this.props.userLogin(user);
   };
   handleRegister = () => {
@@ -42,6 +50,7 @@ class Login extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleRegister={this.handleRegister}
+        msg={this.state.msg}
       />
     );
   }

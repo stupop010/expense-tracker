@@ -8,7 +8,8 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
-  LOGIN_USER
+  LOGIN_USER,
+  LOGIN_USER_FAILED
 } from "../constants/actionTypes";
 
 export const fetchUser = () => async (dispatch, getState) => {
@@ -24,12 +25,13 @@ export const fetchUser = () => async (dispatch, getState) => {
 
 export const userLogin = body => async dispatch => {
   dispatch({ type: USER_LOADING });
-  console.log("userAction");
   try {
     const res = await axios.post("/user/reg", body);
     dispatch({ type: LOGIN_USER, payload: res.data });
   } catch (err) {
-    console.log(err);
+    dispatch(
+      returnError(err.response.data, err.response.status, "LOGIN_USER_FAILED")
+    );
   }
 };
 

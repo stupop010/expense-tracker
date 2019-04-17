@@ -7,7 +7,6 @@ const keys = require("../config/key");
 
 module.exports = app => {
   app.post("/user/reg", async (req, res) => {
-    console.log("im herre");
     const { email, password } = req.body;
 
     if (!email || !password) {

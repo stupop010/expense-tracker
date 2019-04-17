@@ -3,6 +3,7 @@ import {
   USER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  LOGIN_USER_FAILED,
   FETCH_USER_ERROR,
   LOGOUT_SUCCESS,
   LOGIN_USER
@@ -39,6 +40,7 @@ export default function(state = initialState, action) {
       };
     case LOGOUT_SUCCESS:
     case FETCH_USER_ERROR:
+    case LOGIN_USER_FAILED:
       localStorage.removeItem("token");
       return {
         ...state,

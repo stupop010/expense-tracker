@@ -7,6 +7,7 @@ const LoginForm = props => {
     <div className="login">
       <form onSubmit={props.handleSubmit} className="sign-form">
         <h1>Sign In</h1>
+        {props.msg ? <p className="error-message">{props.msg.msg}</p> : null}
         <div className="form-group">
           <label>Email:</label>
           <input type="email" name="email" onChange={props.handleChange} />
