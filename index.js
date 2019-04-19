@@ -21,13 +21,15 @@ app.use(
   })
 );
 
+// passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/authRoutes")(app);
-require("./routes/registerRoutes")(app);
-require("./routes/userRoute")(app);
-require("./routes/expenseRoutes")(app);
+// routes
+app.use("/api", require("./routes/apiRoutes.js"));
+app.use("/auth", require("./routes/googleAuth.js"));
+app.use("/register", require("./routes/registerRoutes.js"));
+app.use("/expense", require("./routes/registerRoutes.js"));
 
 mongoose
   .connect(keys.mongoDB, { useNewUrlParser: true })

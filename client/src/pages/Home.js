@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
+import { fetchUser } from "../action/userAction";
 import { addExpense, fetchExpenses } from "../action/expenseAction";
 import { getExpense, getLoading } from "../selections/ExpenseSelection";
 import "../css/app.css";
 
 class Home extends Component {
   componentDidMount() {
+    this.props.fetchUser();
     this.props.fetchExpenses();
   }
   onSubmit = value => {
@@ -27,6 +29,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return { expense: getExpense(state), loading: getLoading(state) };
 }
 
@@ -39,5 +42,5 @@ Home.protoTypes = {
 
 export default connect(
   mapStateToProps,
-  { addExpense, fetchExpenses }
+  { addExpense, fetchExpenses, fetchUser }
 )(Home);

@@ -29,6 +29,7 @@ library.add(fab);
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    console.log("hello");
   }
   render() {
     const { user } = this.props.auth;

@@ -1,5 +1,7 @@
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const bcrypt = require("bcryptjs");
 const keys = require("../config/key");
 const mongoose = require("mongoose");
 
@@ -41,4 +43,21 @@ passport.use(
       });
     }
   )
+);
+
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+    User.findOne({ email }).then(user => {
+      if (!user) {
+        return done(null, false);
+      }
+      bcrypt.compare(password, user.password, (err, success) => {
+        if (success) {
+          return done(null, user);
+        } else {
+          return done(null);
+        }
+      });
+    });
+  })
 );

@@ -15,7 +15,7 @@ import {
 export const fetchUser = () => async (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
   try {
-    const res = await axios.get("/api/user", tokenConfig(getState));
+    const res = await axios.get("/api/user");
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
     dispatch(returnError(err.response.data, err.response.status));
@@ -26,7 +26,7 @@ export const fetchUser = () => async (dispatch, getState) => {
 export const userLogin = body => async dispatch => {
   dispatch({ type: USER_LOADING });
   try {
-    const res = await axios.post("/user/reg", body);
+    const res = await axios.post("/api/reg", body);
     dispatch({ type: LOGIN_USER, payload: res.data });
   } catch (err) {
     dispatch(
@@ -49,24 +49,8 @@ export const registerUser = body => async dispatch => {
   }
 };
 
-export const logOut = dispatch => {
+export const logOut = () => {
   return {
     type: LOGOUT_SUCCESS
   };
-};
-
-export const tokenConfig = getState => {
-  const token = getState().auth.token;
-
-  const config = {
-    headers: {
-      "Content-type": "application/json"
-    }
-  };
-
-  if (token) {
-    config.headers["x-auth-token"] = token;
-  }
-
-  return config;
 };
