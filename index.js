@@ -27,9 +27,9 @@ app.use(passport.session());
 
 // routes
 app.use("/api", require("./routes/apiRoutes.js"));
+app.use("/expense", require("./routes/expenseRoutes.js"));
 app.use("/auth", require("./routes/googleAuth.js"));
 app.use("/register", require("./routes/registerRoutes.js"));
-app.use("/expense", require("./routes/registerRoutes.js"));
 
 mongoose
   .connect(keys.mongoDB, { useNewUrlParser: true })

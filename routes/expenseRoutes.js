@@ -28,6 +28,7 @@ router.post("/post", async (req, res) => {
 // Route to get the 5 most recent
 router.get("/get_5", async (req, res) => {
   try {
+    console.log("u");
     const expense = await Expense.find({ _user: req.user._id });
     const revExpense = slice_reverse(expense);
     if (_.isEmpty(revExpense)) {
