@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("users");
 
 // Local passport auth
-router.post("/user/reg", passport.authenticate("local"), (req, res) => {
+router.post("/reg", passport.authenticate("local"), (req, res) => {
   res.send(req.user);
 });
 
@@ -19,7 +19,6 @@ router.get("/logout", (req, res) => {
 // find the current user
 router.get("/user", (req, res) => {
   const id = req.user.id;
-  console.log(id);
   if (id) {
     User.findById(id)
       .select("-password")
