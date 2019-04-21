@@ -1,6 +1,6 @@
 import {
   FETCH_USER,
-  USER_LOADING,
+  FETCH_USER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGIN_USER_FAILED,
@@ -10,14 +10,15 @@ import {
 } from "../constants/actionTypes";
 
 const initialState = {
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   isLoading: false,
-  user: null
+  user: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case USER_LOADING:
+    case FETCH_USER_LOADING:
       return {
         ...state,
         isLoading: true
@@ -31,6 +32,7 @@ export default function(state = initialState, action) {
         user: action.payload || false
       };
     case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
@@ -38,10 +40,13 @@ export default function(state = initialState, action) {
         isAuthenticated: true
       };
     case LOGOUT_SUCCESS:
+    case REGISTER_FAIL:
     case FETCH_USER_ERROR:
     case LOGIN_USER_FAILED:
+      localStorage.removeItem("token");
       return {
         ...state,
+        token: null,
         isLoading: false,
         isAuthenticated: false,
         user: false

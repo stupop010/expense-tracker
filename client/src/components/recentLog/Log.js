@@ -6,16 +6,15 @@ import "./recentLog.css";
 
 const Log = props => {
   const { expense, error } = props;
-  console.log(expense);
   return (
     <>
       <h1 className="header">Recent Expenses</h1>
       {error ? <h2 className="header error">{error}</h2> : null}
-      {/* {expense.map(item => (
+      {expense.map(item => (
         <div key={item._id} className="card card-anim">
           <ExpenseList expense={item} />
         </div>
-      ))} */}
+      ))}
     </>
   );
 };

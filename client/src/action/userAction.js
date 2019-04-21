@@ -3,8 +3,7 @@ import { returnError } from "./errorAction";
 import {
   FETCH_USER,
   FETCH_USER_ERROR,
-  FETCH_EXPENSES_FAILED,
-  USER_LOADING,
+  FETCH_USER_LOADING,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT_SUCCESS,
@@ -13,9 +12,9 @@ import {
 } from "../constants/actionTypes";
 
 export const fetchUser = () => async (dispatch, getState) => {
-  dispatch({ type: USER_LOADING });
+  dispatch({ type: FETCH_USER_LOADING });
   try {
-    const res = await axios.get("/api/user");
+    const res = await axios.get("/api/user", tokenConfig(getState));
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
     dispatch(returnError(err.response.data, err.response.status));
@@ -24,7 +23,7 @@ export const fetchUser = () => async (dispatch, getState) => {
 };
 
 export const userLogin = body => async dispatch => {
-  dispatch({ type: USER_LOADING });
+  dispatch({ type: FETCH_USER_LOADING });
   try {
     const res = await axios.post("/api/reg", body);
     dispatch({ type: LOGIN_USER, payload: res.data });
@@ -32,6 +31,7 @@ export const userLogin = body => async dispatch => {
     dispatch(
       returnError(err.response.data, err.response.status, "LOGIN_USER_FAILED")
     );
+    dispatch({ type: LOGIN_USER_FAILED });
   }
 };
 
@@ -53,4 +53,23 @@ export const logOut = () => {
   return {
     type: LOGOUT_SUCCESS
   };
+};
+
+export const tokenConfig = getState => {
+  // Get token from localstorage
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      "Content-type": "application/json"
+    }
+  };
+
+  // If token, add to headers
+  if (token) {
+    config.headers["x-auth-token"] = token;
+  }
+
+  return config;
 };

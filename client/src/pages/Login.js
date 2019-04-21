@@ -7,10 +7,9 @@ import { errorMessage } from "../selections/ErrorSelection";
 import { userLogin } from "../action/userAction";
 import { clearErrors } from "../action/errorAction";
 import LoginForm from "../components/LoginForm/LoginForm";
-import { isNullOrUndefined } from "util";
 
 class Login extends Component {
-  state = { email: "", password: "", msg: isNullOrUndefined };
+  state = { email: "", password: "", msg: null };
   componentDidUpdate(prevProps) {
     const { isAuthenticated, error } = this.props;
 

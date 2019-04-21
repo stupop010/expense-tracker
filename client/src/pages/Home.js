@@ -18,6 +18,7 @@ class Home extends Component {
     this.props.addExpense(value);
   };
   render() {
+    console.log(this.props);
     const { expense, loading } = this.props;
     return (
       <div className="home-container">
