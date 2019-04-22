@@ -20,7 +20,7 @@ router.get("/logout", (req, res) => {
 // find the current user
 router.get("/user", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const user = await User.findById(req.user._id).select("-password");
     res.send(user);
   } catch (err) {
     res.status(400).json({ msg: err });

@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 function auth(req, res, next) {
   // if a req.user set by google outh, we just send it back
-  console.log(req.user);
   if (req.user) return res.send(req.user);
 
   const token = req.header("x-auth-token");

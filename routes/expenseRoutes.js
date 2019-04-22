@@ -7,13 +7,12 @@ const Expense = mongoose.model("expense");
 const slice_reverse = require("../utils/sliceReverse");
 
 router.post("/post", async (req, res) => {
-  const { price, description, categries } = req.body;
-
+  const { price, description, categries } = req.body.item;
   const expense = new Expense({
     price,
     description,
     category: categries,
-    _user: req.user.id,
+    _user: req.body.id,
     date: Date.now()
   });
 
@@ -28,7 +27,9 @@ router.post("/post", async (req, res) => {
 // Route to get the 5 most recent
 router.get("/get_5", async (req, res) => {
   try {
-    const expense = await Expense.find({ _user: req.user._id });
+    console.log(req.query);
+    const expense = await Expense.find({ _user: req.query.id });
+    console.log(expense);
     const revExpense = slice_reverse(expense);
     if (_.isEmpty(revExpense)) {
       res
@@ -44,11 +45,13 @@ router.get("/get_5", async (req, res) => {
 
 // Route to Pagination
 router.get("/all", async (req, res) => {
+  console.log(req.query);
   try {
-    const expense = await Expense.find({ _user: req.user.id })
+    const expense = await Expense.find({ _user: req.query.id })
       .sort({ date: -1 })
       .limit(parseInt(req.query.limit))
       .skip(parseInt(req.query.skip));
+    console.log(expense);
     res.json(expense);
   } catch (e) {
     res.status(400).json({

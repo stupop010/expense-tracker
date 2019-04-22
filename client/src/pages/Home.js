@@ -8,17 +8,17 @@ import { fetchUser } from "../action/userAction";
 import { addExpense, fetchExpenses } from "../action/expenseAction";
 import { getExpense, getLoading } from "../selections/ExpenseSelection";
 import "../css/app.css";
+import { getUserId } from "../selections/UserSelection";
 
 class Home extends Component {
   componentDidMount() {
     this.props.fetchUser();
-    this.props.fetchExpenses();
+    this.props.fetchExpenses(this.props.userId);
   }
   onSubmit = value => {
-    this.props.addExpense(value);
+    this.props.addExpense(value, this.props.userId);
   };
   render() {
-    console.log(this.props);
     const { expense, loading } = this.props;
     return (
       <div className="home-container">
@@ -30,8 +30,11 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
-  return { expense: getExpense(state), loading: getLoading(state) };
+  return {
+    expense: getExpense(state),
+    loading: getLoading(state),
+    userId: getUserId(state)
+  };
 }
 
 Home.protoTypes = {
