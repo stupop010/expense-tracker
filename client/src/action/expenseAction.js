@@ -17,7 +17,6 @@ export const addExpense = (item, id) => async dispatch => {
 
 // Fetch All Expense
 export const fetchExpenses = id => async dispatch => {
-  console.log(id);
   const config = {
     headers: {
       "Content-type": "application/json"

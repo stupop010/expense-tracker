@@ -14,6 +14,7 @@ const PaginationLog = props => {
           </div>
         );
       })}
+      {props.msg ? <h2 className="pag-error">{props.msg}</h2> : null}
       <button type="button" className="pag-button" onClick={props.handleClick}>
         Load more ...
       </button>

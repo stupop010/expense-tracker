@@ -25,8 +25,14 @@
   margin: 1rem;
 }
 
+.pag-error {
+  color: red;
+  text-align: center;
+}
+
 .pag-button {
   margin: 7px auto;
+  margin-bottom: 15em;
   text-align: center;
   background: #9fa9bb;
   font-size: 20px;

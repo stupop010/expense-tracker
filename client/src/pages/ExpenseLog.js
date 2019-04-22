@@ -13,7 +13,8 @@ import { pagintionExpense } from "../action/expenseAction";
 
 class ExpenseLog extends Component {
   state = {
-    limit: 10
+    limit: 10,
+    msg: null
   };
 
   componentDidMount() {
@@ -23,6 +24,13 @@ class ExpenseLog extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.limit !== this.state.limit) {
       this.props.pagintionExpense(this.state.limit, this.props.userId);
+    }
+    if (prevProps.pagItems !== this.props.pagItems) {
+      if (prevProps.pagItems.length === this.props.pagItems.length) {
+        this.setState({ msg: "No more can be found" });
+      } else {
+        this.setState({ msg: null });
+      }
     }
   }
 
@@ -35,7 +43,11 @@ class ExpenseLog extends Component {
   render() {
     return (
       <div className="expense-container">
-        <PaginationLog {...this.props} handleClick={this.handleClick} />
+        <PaginationLog
+          {...this.props}
+          handleClick={this.handleClick}
+          msg={this.state.msg}
+        />
       </div>
     );
   }
