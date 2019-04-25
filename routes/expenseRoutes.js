@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const reqUser = require("../middleware/reqUser");
+const isAuthenticated = require("../middleware/isAuthenticated");
 const Expense = mongoose.model("expense");
 const slice_reverse = require("../utils/sliceReverse");
 const isEmptyExpense = require("../utils/isEmptyExpense");
 
-router.post("/post", reqUser, async (req, res) => {
+router.post("/post", isAuthenticated, async (req, res) => {
   const { price, description, categries } = req.body.item;
   const expense = new Expense({
     price,
@@ -26,7 +26,7 @@ router.post("/post", reqUser, async (req, res) => {
 });
 
 // Route to get the 5 most recent
-router.get("/get_5", async (req, res) => {
+router.get("/get_5", isAuthenticated, async (req, res) => {
   try {
     const expense = await Expense.find({ _user: req.query.id });
     const revExpense = slice_reverse(expense);
@@ -39,7 +39,7 @@ router.get("/get_5", async (req, res) => {
 });
 
 // Route to Pagination
-router.get("/all", async (req, res) => {
+router.get("/all", isAuthenticated, async (req, res) => {
   try {
     const expense = await Expense.find({ _user: req.query.id })
       .sort({ date: -1 })

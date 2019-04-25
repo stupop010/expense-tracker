@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const mongoose = require("mongoose");
-
-const auth = require("../middleware/auth");
-const User = mongoose.model("users");
 
 // Local passport auth
 router.post("/login", passport.authenticate("local"), (req, res) => {
@@ -18,12 +14,11 @@ router.get("/logout", (req, res) => {
 });
 
 // find the current user
-router.get("/user", auth, async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).select("-password");
-    res.send(user);
-  } catch (err) {
-    res.status(400).json({ msg: err });
+router.get("/user", async (req, res) => {
+  if (req.user) {
+    return res.send(req.user);
+  } else {
+    return res.status(401);
   }
 });
 
