@@ -3,7 +3,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const keys = require("./config/key");
-const cookieSession = require("cookie-session");
+const session = require("express-session");
 
 require("./models/User");
 require("./models/Expense");
@@ -15,9 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
+  session({
+    secret: "secret",
+    saveUninitialized: true,
+    resave: true
   })
 );
 

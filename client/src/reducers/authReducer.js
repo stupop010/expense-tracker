@@ -10,10 +10,10 @@ import {
 } from "../constants/actionTypes";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  isAuthenticated: false,
   isLoading: false,
-  user: false
+  user: false,
+  message: null
 };
 
 export default function(state = initialState, action) {
@@ -29,27 +29,26 @@ export default function(state = initialState, action) {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload || false
+        user: action.payload || false,
+        message: null
       };
     case REGISTER_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
       return {
         ...state,
         ...action.payload,
         isLoading: false,
-        isAuthenticated: true
+        isAuthenticated: false
       };
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
     case FETCH_USER_ERROR:
     case LOGIN_USER_FAILED:
-      localStorage.removeItem("token");
       return {
         ...state,
-        token: null,
         isLoading: false,
         isAuthenticated: false,
-        user: false
+        user: false,
+        message: null
       };
 
     default:

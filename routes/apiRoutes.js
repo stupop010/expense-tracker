@@ -7,7 +7,7 @@ const auth = require("../middleware/auth");
 const User = mongoose.model("users");
 
 // Local passport auth
-router.post("/reg", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
   res.send(req.user);
 });
 

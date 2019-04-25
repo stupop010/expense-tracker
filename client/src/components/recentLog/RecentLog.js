@@ -36,7 +36,6 @@ class RecentLog extends Component {
   };
 
   render() {
-    console.log(this.props);
     const { expense, loading } = this.props;
     return (
       <div className="card-contaniner">

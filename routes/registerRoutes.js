@@ -28,21 +28,9 @@ router.post("/user", async (req, res) => {
         if (err) throw err;
         newUser.password = hash;
         newUser.save().then(user => {
-          jwt.sign(
-            { _id: user.id },
-            keys.cookieKey,
-            { expiresIn: "1h" },
-            (err, token) => {
-              res.json({
-                token,
-                user: {
-                  _id: user.id,
-                  username: user.username,
-                  email: user.email
-                }
-              });
-            }
-          );
+          res.json({
+            message: "You are now registered and can log in"
+          });
         });
       });
     });

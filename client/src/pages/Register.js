@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { isAuthenticated } from "../selections/UserSelection";
+import { isAuthenticated, successMessage } from "../selections/UserSelection";
 import { errorMessage } from "../selections/ErrorSelection";
 import { clearErrors } from "../action/errorAction";
 import { registerUser } from "../action/userAction";
@@ -12,7 +12,7 @@ class Register extends Component {
   state = { username: "", email: "", password: "", errMessage: null };
 
   componentDidUpdate(prevProps) {
-    const { isAuthenticated, error } = this.props;
+    const { error, message } = this.props;
     if (error !== prevProps.error) {
       if (error.id === "REGISTER_FAIL") {
         this.setState({ errMessage: error.msg.msg });
@@ -20,10 +20,13 @@ class Register extends Component {
         this.setState({ errMessage: null });
       }
     }
-    if (isAuthenticated !== prevProps.isAuthenticated) {
-      if (isAuthenticated) {
-        this.props.clearErrors();
-        this.props.history.push("/");
+    if (message !== prevProps.message) {
+      if (message) {
+        this.setState({
+          username: "",
+          email: "",
+          password: ""
+        });
       }
     }
   }
@@ -42,21 +45,29 @@ class Register extends Component {
     this.props.registerUser(registerBody);
   };
 
+  loginButton = e => {
+    this.props.history.push("/login");
+  };
   render() {
     return (
       <RegisterForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         error={this.state.errMessage}
+        message={this.props.message}
+        loginButton={this.loginButton}
+        {...this.state}
       />
     );
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
     isAuthenticated: isAuthenticated(state),
-    error: errorMessage(state)
+    error: errorMessage(state),
+    message: successMessage(state)
   };
 }
 

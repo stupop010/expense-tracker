@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
+const reqUser = require("../middleware/reqUser");
 const Expense = mongoose.model("expense");
 const slice_reverse = require("../utils/sliceReverse");
 const isEmptyExpense = require("../utils/isEmptyExpense");
 
-router.post("/post", async (req, res) => {
+router.post("/post", reqUser, async (req, res) => {
   const { price, description, categries } = req.body.item;
   const expense = new Expense({
     price,

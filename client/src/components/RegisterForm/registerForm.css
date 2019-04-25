@@ -6,3 +6,13 @@
   color: red;
   font-style: italic;
 }
+
+.succuss-message {
+  text-align: center;
+  padding: 1em;
+  width: 70%;
+  background: rgba(46, 204, 113, 1);
+  margin: auto;
+  border: solid rgba(0, 0, 0, 0.5) 2px;
+  border-radius: 10px;
+}

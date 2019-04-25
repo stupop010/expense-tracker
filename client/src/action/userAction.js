@@ -25,7 +25,7 @@ export const fetchUser = () => async (dispatch, getState) => {
 export const userLogin = body => async dispatch => {
   dispatch({ type: FETCH_USER_LOADING });
   try {
-    const res = await axios.post("/api/reg", body);
+    const res = await axios.post("/api/login", body);
     dispatch({ type: LOGIN_USER, payload: res.data });
   } catch (err) {
     dispatch(
@@ -38,6 +38,7 @@ export const userLogin = body => async dispatch => {
 export const registerUser = body => async dispatch => {
   try {
     const res = await axios.post("/register/user", body);
+    console.log(res.data);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch(

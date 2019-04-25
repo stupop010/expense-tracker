@@ -5,7 +5,7 @@ import "./login.css";
 const LoginForm = props => {
   return (
     <div className="login">
-      <form onSubmit={props.handleSubmit} className="sign-form">
+      <form onSubmit={props.handleSubmit} className="sign-form m-t">
         <h1>Sign In</h1>
         {props.msg ? <h4 className="error-message">{props.msg.msg}</h4> : null}
         <div className="form-group">

@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import "./landingPage.css";
 
@@ -9,9 +8,9 @@ const LandingPage = () => {
       <h1 className="landing-page-title">Expense Tracking App</h1>
       <div>
         <p>Please Sign in</p>
-        <NavLink exact to="/login" className="landing-button">
+        <a href="/login" className="landing-button">
           Login
-        </NavLink>
+        </a>
       </div>
     </div>
   );
