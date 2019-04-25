@@ -16,6 +16,9 @@ class Login extends Component {
     if (error !== prevProps.error) {
       if ((error.id = "LOGIN_USER_FAILED")) {
         this.setState({ msg: error.msg });
+        setTimeout(() => {
+          this.setState({ msg: null });
+        }, 5000);
       } else {
         this.setState({ msg: null });
       }
@@ -40,8 +43,7 @@ class Login extends Component {
     this.props.userLogin(user);
   };
   handleRegister = () => {
-    let path = `/register`;
-    this.props.history.push(path);
+    this.props.history.push("/register");
   };
   render() {
     return (
@@ -61,6 +63,7 @@ function mapStateToProps(state) {
     error: errorMessage(state)
   };
 }
+
 Login.protoTypes = {
   userLogin: PropTypes.func.isRequired
 };

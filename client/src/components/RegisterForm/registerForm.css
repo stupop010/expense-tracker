@@ -2,12 +2,8 @@
   margin-top: 1em;
 }
 
+.succuss-message,
 .error-message {
-  color: red;
-  font-style: italic;
-}
-
-.succuss-message {
   text-align: center;
   padding: 1em;
   width: 70%;
@@ -15,4 +11,8 @@
   margin: auto;
   border: solid rgba(0, 0, 0, 0.5) 2px;
   border-radius: 10px;
+}
+
+.error-message {
+  background: rgba(242, 38, 19, 1);
 }

@@ -50,7 +50,7 @@ passport.use(
     User.findOne({ email }).then(user => {
       if (!user) {
         return done(null, false, {
-          message: "Either the email or password is incorrected"
+          msg: "Either the email or password is incorrected"
         });
       }
       bcrypt.compare(password, user.password, (err, success) => {
@@ -58,7 +58,7 @@ passport.use(
           return done(null, user);
         } else {
           return done(null, false, {
-            message: "Either the email or password is incorrected"
+            msg: "Either the email or password is incorrected"
           });
         }
       });

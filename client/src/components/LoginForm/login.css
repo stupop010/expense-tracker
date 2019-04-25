@@ -18,6 +18,15 @@
 .m-t {
   margin-top: 1em;
 }
+.error-message {
+  text-align: center;
+  padding: 1em;
+  width: 70%;
+  background: rgba(242, 38, 19, 1);
+  margin: auto;
+  border: solid rgba(0, 0, 0, 0.5) 2px;
+  border-radius: 10px;
+}
 .form-group > label {
   margin-top: 100px;
 }

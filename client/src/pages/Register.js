@@ -16,6 +16,9 @@ class Register extends Component {
     if (error !== prevProps.error) {
       if (error.id === "REGISTER_FAIL") {
         this.setState({ errMessage: error.msg.msg });
+        setTimeout(() => {
+          this.setState({ errMessage: null });
+        }, 5000);
       } else {
         this.setState({ errMessage: null });
       }
@@ -63,7 +66,6 @@ class Register extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     isAuthenticated: isAuthenticated(state),
     error: errorMessage(state),
