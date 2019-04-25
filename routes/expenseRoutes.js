@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const Expense = mongoose.model("expense");
 
 const isAuthenticated = require("../middleware/isAuthenticated");
-const Expense = mongoose.model("expense");
 const slice_reverse = require("../utils/sliceReverse");
 const isEmptyExpense = require("../utils/isEmptyExpense");
 

@@ -1,17 +1,11 @@
 const passport = require("passport");
-const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const bcrypt = require("bcryptjs");
-const keys = require("../config/key");
 const mongoose = require("mongoose");
 
-const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = keys.jwt;
-
 const User = mongoose.model("users");
+const keys = require("../config/key");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -55,13 +49,17 @@ passport.use(
   new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
     User.findOne({ email }).then(user => {
       if (!user) {
-        return done(null, false);
+        return done(null, false, {
+          message: "Either the email or password is incorrected"
+        });
       }
       bcrypt.compare(password, user.password, (err, success) => {
         if (success) {
           return done(null, user);
         } else {
-          return done(null);
+          return done(null, false, {
+            message: "Either the email or password is incorrected"
+          });
         }
       });
     });
