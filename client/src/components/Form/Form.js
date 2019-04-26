@@ -5,6 +5,7 @@ const Form = props => {
   return (
     <form onSubmit={props.submit} className="expense-form">
       <h1>Add Expenses</h1>
+      {props.msg ? <div className="error-message">{props.msg}</div> : null}
       <div>
         <div className="form-group">
           <label>Categories</label>

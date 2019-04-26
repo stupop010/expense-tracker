@@ -1,11 +1,28 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { errorMessage } from "../../selections/ErrorSelection";
 import Form from "./Form";
 import "./form.css";
 
 class ExpenseForm extends Component {
-  state = { categries: "", price: "", description: "" };
+  state = { categries: "", price: "", description: "", msg: null };
+
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+
+    if (error !== prevProps.error) {
+      if (error.id === "POST_EXPENSES_FAILED") {
+        this.setState({ msg: error.msg.msg });
+        setTimeout(() => {
+          this.setState({ msg: null });
+        }, 5000);
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -36,13 +53,18 @@ class ExpenseForm extends Component {
         valuePrice={this.state.price}
         valueDes={this.state.description}
         clear={this.onClear}
+        msg={this.state.msg}
       />
     );
   }
+}
+
+function mapStateToProps(state) {
+  return { error: errorMessage(state) };
 }
 
 ExpenseForm.propTypes = {
   onSubmit: PropTypes.func.isRequired
 };
 
-export default ExpenseForm;
+export default connect(mapStateToProps)(ExpenseForm);

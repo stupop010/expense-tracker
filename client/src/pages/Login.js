@@ -16,7 +16,7 @@ class Login extends Component {
     if (error !== prevProps.error) {
       if ((error.id = "LOGIN_USER_FAILED")) {
         this.setState({ msg: error.msg });
-        setTimeout(() => {
+        setInterval(() => {
           this.setState({ msg: null });
         }, 5000);
       } else {
