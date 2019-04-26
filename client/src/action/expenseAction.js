@@ -5,14 +5,22 @@ import {
   FETCH_EXPENSES,
   IS_FETCHING,
   FETCH_PAGINATION_EXPENSE,
-  FETCH_EXPENSES_FAILED
+  FETCH_EXPENSES_FAILED,
+  POST_EXPENSES_FAILED
 } from "../constants/actionTypes";
 
 // Add expense
 export const addExpense = (item, id) => async dispatch => {
-  const body = { item, id };
-  const res = await axios.post("/expense/post", body);
-  dispatch({ type: ADD_EXPENSE, payload: res.data });
+  try {
+    const body = { item, id };
+    const res = await axios.post("/expense/post", body);
+    dispatch({ type: ADD_EXPENSE, payload: res.data });
+  } catch (e) {
+    dispatch(
+      returnError(e.response.data, e.response.status, "POST_EXPENSES_FAILED")
+    );
+    dispatch({ type: POST_EXPENSES_FAILED });
+  }
 };
 
 // Fetch All Expense

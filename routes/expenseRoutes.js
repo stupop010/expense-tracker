@@ -9,6 +9,10 @@ const isEmptyExpense = require("../utils/isEmptyExpense");
 
 router.post("/post", isAuthenticated, async (req, res) => {
   const { price, description, categries } = req.body.item;
+
+  if (!price || !description || !categries)
+    return res.status(400).json({ msg: "please fill in all" });
+
   const expense = new Expense({
     price,
     description,
