@@ -45,7 +45,6 @@ router.get("/all", isAuthenticated, async (req, res) => {
       .sort({ date: -1 })
       .limit(parseInt(req.query.limit))
       .skip(parseInt(req.query.skip));
-
     // check if the expense array is empty
     isEmptyExpense(expense, res);
   } catch (e) {

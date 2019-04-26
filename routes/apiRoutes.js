@@ -3,15 +3,15 @@ const router = express.Router();
 const passport = require("passport");
 
 // Local passport auth
-router.post("/login", function(req, res, next) {
-  passport.authenticate("local", function(err, user, info) {
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       return next(err);
     }
     if (info) {
       return res.status(400).json(info);
     }
-    req.logIn(user, function(err) {
+    req.logIn(user, err => {
       if (err) {
         return next(err);
       }
