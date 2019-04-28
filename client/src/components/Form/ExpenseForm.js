@@ -15,7 +15,7 @@ class ExpenseForm extends Component {
     if (error !== prevProps.error) {
       if (error.id === "POST_EXPENSES_FAILED") {
         this.setState({ msg: error.msg.msg });
-        setTimeout(() => {
+        setInterval(() => {
           this.setState({ msg: null });
         }, 5000);
       } else {

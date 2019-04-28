@@ -7,6 +7,7 @@ const PaginationLog = props => {
   const items = props.pagItems;
   return (
     <div className="pag-body">
+      <h2 className="title">Expense Log</h2>
       {items.map(item => {
         return (
           <div key={item._id} className="pag-card">

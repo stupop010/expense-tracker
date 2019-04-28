@@ -10,13 +10,17 @@ import LoginForm from "../components/LoginForm/LoginForm";
 
 class Login extends Component {
   state = { email: "", password: "", msg: null };
+
+  componentDidMount() {
+    this.timer = null;
+  }
   componentDidUpdate(prevProps) {
     const { isAuthenticated, error } = this.props;
 
     if (error !== prevProps.error) {
       if ((error.id = "LOGIN_USER_FAILED")) {
         this.setState({ msg: error.msg });
-        setInterval(() => {
+        this.timer = setInterval(() => {
           this.setState({ msg: null });
         }, 5000);
       } else {
@@ -29,6 +33,9 @@ class Login extends Component {
         this.props.history.push("/");
       }
     }
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });

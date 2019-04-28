@@ -16,7 +16,7 @@ class Register extends Component {
     if (error !== prevProps.error) {
       if (error.id === "REGISTER_FAIL") {
         this.setState({ errMessage: error.msg.msg });
-        setTimeout(() => {
+        setInterval(() => {
           this.setState({ errMessage: null });
         }, 5000);
       } else {

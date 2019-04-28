@@ -7,7 +7,7 @@
 .card {
   text-align: center;
   height: 3em;
-  width: 100%;
+  width: 70%;
   margin: 2px auto;
   border: 1px solid black;
   border-radius: 5px;
@@ -62,5 +62,21 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .card {
+    height: auto;
+  }
+  .card ul li {
+    display: block;
+    overflow: auto;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 100%;
   }
 }

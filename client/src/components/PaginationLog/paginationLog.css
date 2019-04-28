@@ -4,6 +4,11 @@
   justify-content: center;
   margin-top: 2%;
 }
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0 0 0.5em 0;
+}
 .pag-card {
   text-align: center;
   background: #cdd2db;
@@ -36,7 +41,7 @@
   text-align: center;
   background: #9fa9bb;
   font-size: 20px;
-  width: 25%;
+  width: 10em;
   height: 50px;
   border-radius: 35px;
   border: none;
@@ -57,5 +62,22 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .pag-card ul {
+    padding: 0;
+  }
+  .pag-card ul li {
+    display: block;
+    overflow: auto;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .pag-card {
+    width: 100%;
   }
 }

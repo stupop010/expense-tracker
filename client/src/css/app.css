@@ -17,5 +17,5 @@ a {
 .home-container,
 .expense-container {
   height: auto;
-  width: 70%;
+  width: 100%;
 }
