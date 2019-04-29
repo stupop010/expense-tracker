@@ -31,7 +31,6 @@ router.post("/post", isAuthenticated, async (req, res) => {
 
 // Route to get the 5 most recent
 router.get("/get_5", isAuthenticated, async (req, res) => {
-  console.log(req.user)
   try {
     const expense = await Expense.find({ _user: req.user.id });
     const revExpense = slice_reverse(expense);
@@ -45,7 +44,6 @@ router.get("/get_5", isAuthenticated, async (req, res) => {
 
 // Route to Pagination
 router.get("/all", isAuthenticated, async (req, res) => {
-  console.log(req.user)
   try {
     const expense = await Expense.find({ _user: req.user.id })
       .sort({ date: -1 })
