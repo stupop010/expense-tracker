@@ -41,7 +41,7 @@ class ExpenseForm extends Component {
       description
     };
     this.props.onSubmit(value);
-    this.onClear();
+    //this.onClear();
   };
 
   render() {

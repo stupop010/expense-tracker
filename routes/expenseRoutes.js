@@ -31,8 +31,9 @@ router.post("/post", isAuthenticated, async (req, res) => {
 
 // Route to get the 5 most recent
 router.get("/get_5", isAuthenticated, async (req, res) => {
+  console.log(req.user)
   try {
-    const expense = await Expense.find({ _user: req.query.id });
+    const expense = await Expense.find({ _user: req.user.id });
     const revExpense = slice_reverse(expense);
 
     // check if the expense array is emtpy
@@ -44,8 +45,9 @@ router.get("/get_5", isAuthenticated, async (req, res) => {
 
 // Route to Pagination
 router.get("/all", isAuthenticated, async (req, res) => {
+  console.log(req.user)
   try {
-    const expense = await Expense.find({ _user: req.query.id })
+    const expense = await Expense.find({ _user: req.user.id })
       .sort({ date: -1 })
       .limit(parseInt(req.query.limit))
       .skip(parseInt(req.query.skip));
@@ -57,5 +59,9 @@ router.get("/all", isAuthenticated, async (req, res) => {
     });
   }
 });
+
+// router.get('/:id', isAuthenticated, async (req, res) => {
+
+// })
 
 module.exports = router;

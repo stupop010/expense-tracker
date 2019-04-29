@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import ExpenseList from "../ExpenseList";
 import "./recentLog.css";
 
-const Log = props => {
-  const { expense, error } = props;
+const Log = ({expense, error}) => {
   return (
     <>
       <h1 className="header">Recent Expenses</h1>

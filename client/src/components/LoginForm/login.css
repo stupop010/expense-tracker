@@ -93,4 +93,8 @@
   .google-link span {
     font-size: 19px;
   }
+  .login{
+    top: 5%;
+    height: 25em;
+  }
 }

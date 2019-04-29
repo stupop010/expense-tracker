@@ -10,10 +10,9 @@ import {
 } from "../constants/actionTypes";
 
 // Add expense
-export const addExpense = (item, id) => async dispatch => {
+export const addExpense = (item) => async dispatch => {
   try {
-    const body = { item, id };
-    const res = await axios.post("/expense/post", body);
+    const res = await axios.post("/expense/post", item);
     dispatch({ type: ADD_EXPENSE, payload: res.data });
   } catch (e) {
     dispatch(
@@ -24,7 +23,7 @@ export const addExpense = (item, id) => async dispatch => {
 };
 
 // Fetch All Expense
-export const fetchExpenses = id => async dispatch => {
+export const fetchExpenses = () => async dispatch => {
   const config = {
     headers: {
       "Content-type": "application/json"
@@ -32,7 +31,7 @@ export const fetchExpenses = id => async dispatch => {
   };
   try {
     dispatch({ type: IS_FETCHING });
-    const res = await axios.get("/expense/get_5", { params: { id } }, config);
+    const res = await axios.get("/expense/get_5", config);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
     dispatch(
@@ -43,7 +42,7 @@ export const fetchExpenses = id => async dispatch => {
 };
 
 // Fetch Pagintion Expense
-export const pagintionExpense = (limit, id) => async dispatch => {
+export const pagintionExpense = (limit) => async dispatch => {
   const config = {
     headers: {
       "Content-type": "application/json"
@@ -51,7 +50,7 @@ export const pagintionExpense = (limit, id) => async dispatch => {
   };
   const res = await axios.get(
     "/expense/all",
-    { params: { limit, id } },
+    { params: { limit } },
     config
   );
   dispatch({ type: FETCH_PAGINATION_EXPENSE, payload: res.data });

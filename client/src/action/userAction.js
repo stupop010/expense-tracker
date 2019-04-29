@@ -14,7 +14,7 @@ import {
 export const fetchUser = () => async (dispatch, getState) => {
   dispatch({ type: FETCH_USER_LOADING });
   try {
-    const res = await axios.get("/api/user", tokenConfig(getState));
+    const res = await axios.get("/api/user");
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
     dispatch(returnError(err.response.data, err.response.status));
@@ -38,7 +38,6 @@ export const userLogin = body => async dispatch => {
 export const registerUser = body => async dispatch => {
   try {
     const res = await axios.post("/register/user", body);
-    console.log(res.data);
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });
   } catch (err) {
     dispatch(
@@ -56,21 +55,3 @@ export const logOut = () => {
   };
 };
 
-export const tokenConfig = getState => {
-  // Get token from localstorage
-  const token = getState().auth.token;
-
-  // Headers
-  const config = {
-    headers: {
-      "Content-type": "application/json"
-    }
-  };
-
-  // If token, add to headers
-  if (token) {
-    config.headers["x-auth-token"] = token;
-  }
-
-  return config;
-};

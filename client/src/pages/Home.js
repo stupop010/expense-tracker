@@ -13,10 +13,10 @@ import { getUserId } from "../selections/UserSelection";
 class Home extends Component {
   componentDidMount() {
     this.props.fetchUser();
-    this.props.fetchExpenses(this.props.userId);
+    this.props.fetchExpenses();
   }
   onSubmit = value => {
-    this.props.addExpense(value, this.props.userId);
+    this.props.addExpense(value);
   };
   render() {
     const { expense, loading } = this.props;
