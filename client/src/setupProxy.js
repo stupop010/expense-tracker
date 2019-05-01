@@ -5,4 +5,5 @@ module.exports = function(app) {
   app.use(proxy("/expense/*", { target: "http://localhost:5000/" }));
   app.use(proxy("/user/*", { target: "http://localhost:5000/" }));
   app.use(proxy("/register/*", { target: "http://localhost:5000/" }));
+  app.use(proxy("/expense-item/*", { target: "http://localhost:5000/" }));
 };

@@ -13,6 +13,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import "./css/app.css";
 
 import NavBar from "./components/MainNav/NavBar";
+import UserAdmin from "./pages/UserAdmin"
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -62,6 +63,7 @@ class App extends Component {
                 component={ExpenseLog}
                 auth={user}
               />
+              <Route path="/expense-item" component={UserAdmin}/>
             </Switch>
           </div>
         </>

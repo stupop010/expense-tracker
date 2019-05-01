@@ -58,8 +58,4 @@ router.get("/all", isAuthenticated, async (req, res) => {
   }
 });
 
-// router.get('/:id', isAuthenticated, async (req, res) => {
-
-// })
-
 module.exports = router;

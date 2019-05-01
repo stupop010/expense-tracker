@@ -13,7 +13,13 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
-    done(null, user);
+    const sendUser = {
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      register_date: user.register_date
+    }
+    done(null, sendUser);
   });
 });
 
@@ -28,7 +34,6 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(currentUser => {
         if (currentUser) {
-          done(null, currentUser);
         } else {
           new User({
             username: profile.displayName,

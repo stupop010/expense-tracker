@@ -31,6 +31,7 @@ app.use("/api", require("./routes/apiRoutes.js"));
 app.use("/expense", require("./routes/expenseRoutes.js"));
 app.use("/auth", require("./routes/googleAuth.js"));
 app.use("/register", require("./routes/registerRoutes.js"));
+app.use("/expense-item", require("./routes/userAdminRoute.js"))
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder

@@ -15,6 +15,7 @@ export const fetchUser = () => async (dispatch, getState) => {
   dispatch({ type: FETCH_USER_LOADING });
   try {
     const res = await axios.get("/api/user");
+    console.log(res.data)
     dispatch({ type: FETCH_USER, payload: res.data });
   } catch (err) {
     dispatch(returnError(err.response.data, err.response.status));
