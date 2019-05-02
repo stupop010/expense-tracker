@@ -25,15 +25,11 @@ class RecentLog extends Component {
     }
     if (expense !== prevProps.expense) {
       if (expense.length > 0) {
-        this.clearError();
+        this.props.clearErrors();
+        this.setState({ error: false });
       }
     }
   }
-
-  clearError = () => {
-    this.props.clearErrors();
-    this.setState({ error: false });
-  };
 
   render() {
     const { expense, loading } = this.props;
@@ -56,9 +52,9 @@ RecentLog.propTypes = {
   clearErrors: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return { error: errorMessage(state) };
-}
+};
 
 export default connect(
   mapStateToProps,

@@ -11,18 +11,11 @@ import LoginForm from "../components/LoginForm/LoginForm";
 class Login extends Component {
   state = { email: "", password: "", msg: null };
 
-  componentDidMount() {
-    this.timer = null;
-  }
   componentDidUpdate(prevProps) {
     const { isAuthenticated, error } = this.props;
-
     if (error !== prevProps.error) {
       if ((error.id = "LOGIN_USER_FAILED")) {
         this.setState({ msg: error.msg });
-        this.timer = setInterval(() => {
-          this.setState({ msg: null });
-        }, 5000);
       } else {
         this.setState({ msg: null });
       }
@@ -34,12 +27,11 @@ class Login extends Component {
       }
     }
   }
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -49,9 +41,11 @@ class Login extends Component {
     };
     this.props.userLogin(user);
   };
+
   handleRegister = () => {
     this.props.history.push("/register");
   };
+
   render() {
     return (
       <LoginForm
@@ -64,15 +58,16 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     isAuthenticated: isAuthenticated(state),
     error: errorMessage(state)
   };
-}
+};
 
 Login.protoTypes = {
-  userLogin: PropTypes.func.isRequired
+  userLogin: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired
 };
 
 export default connect(

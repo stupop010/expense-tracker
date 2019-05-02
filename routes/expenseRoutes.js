@@ -8,7 +8,7 @@ const slice_reverse = require("../utils/sliceReverse");
 const isEmptyExpense = require("../utils/isEmptyExpense");
 
 router.post("/post", isAuthenticated, async (req, res) => {
-  const { price, description, categries } = req.body.item;
+  const { price, description, categries } = req.body;
 
   if (!price || !description || !categries)
     return res.status(400).json({ msg: "please fill in all" });
@@ -23,7 +23,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
 
   try {
     await expense.save();
-    res.status(201).send(expense);
+    res.status(201).json(expense);
   } catch (e) {
     res.status(400).json({ msg: "Failed to add expense" });
   }

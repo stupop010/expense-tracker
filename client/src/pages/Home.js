@@ -12,7 +12,6 @@ import { getUserId } from "../selections/UserSelection";
 
 class Home extends Component {
   componentDidMount() {
-    this.props.fetchUser();
     this.props.fetchExpenses();
   }
   onSubmit = value => {
@@ -29,13 +28,13 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     expense: getExpense(state),
     loading: getLoading(state),
     userId: getUserId(state)
   };
-}
+};
 
 Home.protoTypes = {
   addExpense: PropTypes.func.isRequired,

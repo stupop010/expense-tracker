@@ -2,18 +2,34 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Form = props => {
+  const {
+    categries,
+    submit,
+    errorMessage,
+    change,
+    price,
+    clear,
+    description,
+    successMessage
+  } = props;
+
   return (
-    <form onSubmit={props.submit} className="expense-form">
+    <form onSubmit={submit} className="expense-form">
       <h1>Add Expenses</h1>
-      {props.msg ? <div className="error-message">{props.msg}</div> : null}
+      {errorMessage ? (
+        <div className="error-message">{errorMessage}</div>
+      ) : null}
+      {successMessage ? (
+        <div className="error-message">{successMessage}</div>
+      ) : null}
       <div>
         <div className="form-group">
           <label>Categories</label>
           <select
             name="categries"
             className="input"
-            onChange={props.change}
-            value={props.valueCategries}
+            onChange={change}
+            value={categries}
           >
             <option value="" />
             <option value="Food/Drink">Food/Drink</option>
@@ -31,8 +47,8 @@ const Form = props => {
             type="number"
             placeholder="How Much"
             className="input"
-            value={props.valuePrice}
-            onChange={props.change}
+            value={price}
+            onChange={change}
           />
         </div>
       </div>
@@ -44,8 +60,8 @@ const Form = props => {
             type="text"
             placeholder="Description"
             className="input"
-            value={props.valueDes}
-            onChange={props.change}
+            value={description}
+            onChange={change}
           />
         </div>
       </div>
@@ -53,7 +69,7 @@ const Form = props => {
         <button type="submit" className="form-button">
           Sumbit
         </button>
-        <button type="button" className="form-button" onClick={props.clear}>
+        <button type="button" className="form-button" onClick={clear}>
           Clear
         </button>
       </div>

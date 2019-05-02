@@ -3,23 +3,21 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { errorMessage } from "../../selections/ErrorSelection";
+import { expenseSuccessMessage } from "../../selections/ExpenseSelection";
 import Form from "./Form";
 import "./form.css";
 
 class ExpenseForm extends Component {
-  state = { categries: "", price: "", description: "", msg: null };
+  state = { categries: "", price: "", description: "", errorMessage: null };
 
   componentDidUpdate(prevProps) {
     const { error } = this.props;
 
     if (error !== prevProps.error) {
       if (error.id === "POST_EXPENSES_FAILED") {
-        this.setState({ msg: error.msg.msg });
-        setInterval(() => {
-          this.setState({ msg: null });
-        }, 5000);
+        this.setState({ errorMessage: error.msg.msg });
       } else {
-        this.setState({ msg: null });
+        this.setState({ errorMessage: null });
       }
     }
   }
@@ -35,6 +33,7 @@ class ExpenseForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { categries, price, description } = this.state;
+
     const value = {
       categries,
       price,
@@ -49,18 +48,19 @@ class ExpenseForm extends Component {
       <Form
         submit={this.handleSubmit}
         change={this.handleChange}
-        valueCategries={this.state.categries}
-        valuePrice={this.state.price}
-        valueDes={this.state.description}
         clear={this.onClear}
-        msg={this.state.msg}
+        {...this.state}
+        successMessage={this.props.successMessage}
       />
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { error: errorMessage(state) };
+  return {
+    error: errorMessage(state),
+    successMessage: expenseSuccessMessage(state)
+  };
 }
 
 ExpenseForm.propTypes = {

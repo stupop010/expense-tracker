@@ -13,13 +13,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
-    const sendUser = {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      register_date: user.register_date
-    }
-    done(null, sendUser);
+    done(null, user);
   });
 });
 
@@ -60,7 +54,13 @@ passport.use(
       }
       bcrypt.compare(password, user.password, (err, success) => {
         if (success) {
-          return done(null, user);
+          const newUser = {
+            username: user.username,
+            email: user.email,
+            id: user.id,
+            register_date: user.register_date
+          };
+          return done(null, newUser);
         } else {
           return done(null, false, {
             msg: "Either the email or password is incorrected"

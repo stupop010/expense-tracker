@@ -59,13 +59,13 @@ ExpenseLog.protoTypes = {
   pagintionExpense: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     pagItems: getPagination(state),
     pagLoading: paginationLoading(state),
     userId: getUserId(state)
   };
-}
+};
 
 export default connect(
   mapStateToProps,

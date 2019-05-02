@@ -5,12 +5,10 @@ const passport = require("passport");
 // Local passport auth
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (info) {
-      return res.status(400).json(info);
-    }
+    if (err) return next(err);
+
+    if (info) return res.status(400).json(info);
+
     req.logIn(user, err => {
       if (err) {
         return next(err);
@@ -28,11 +26,9 @@ router.get("/logout", (req, res) => {
 
 // find the current user
 router.get("/user", async (req, res) => {
-  if (req.user) {
-    return res.send(req.user);
-  } else {
-    return res.status(401);
-  }
+  if (req.user) return res.send(req.user);
+
+  return res.status(401);
 });
 
 module.exports = router;

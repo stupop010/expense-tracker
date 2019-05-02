@@ -16,15 +16,15 @@ class Register extends Component {
     if (error !== prevProps.error) {
       if (error.id === "REGISTER_FAIL") {
         this.setState({ errMessage: error.msg.msg });
-        setInterval(() => {
-          this.setState({ errMessage: null });
-        }, 5000);
       } else {
         this.setState({ errMessage: null });
       }
     }
+
+    // Success message if register is successful
     if (message !== prevProps.message) {
       if (message) {
+        this.props.clearErrors();
         this.setState({
           username: "",
           email: "",
@@ -33,6 +33,7 @@ class Register extends Component {
       }
     }
   }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -65,13 +66,13 @@ class Register extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     isAuthenticated: isAuthenticated(state),
     error: errorMessage(state),
     message: successMessage(state)
   };
-}
+};
 
 Register.protoTypes = {
   error: PropTypes.object.isRequired,
