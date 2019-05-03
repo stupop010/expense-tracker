@@ -17,7 +17,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
     price,
     description,
     category: categries,
-    _user: req.body.id,
+    _user: req.user.id,
     date: Date.now()
   });
 

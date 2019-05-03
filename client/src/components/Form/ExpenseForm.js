@@ -11,13 +11,18 @@ class ExpenseForm extends Component {
   state = { categries: "", price: "", description: "", errorMessage: null };
 
   componentDidUpdate(prevProps) {
-    const { error } = this.props;
+    const { error, successMessage } = this.props;
 
     if (error !== prevProps.error) {
       if (error.id === "POST_EXPENSES_FAILED") {
         this.setState({ errorMessage: error.msg.msg });
       } else {
         this.setState({ errorMessage: null });
+      }
+    }
+    if (successMessage !== prevProps.successMessage) {
+      if (successMessage) {
+        this.onClear();
       }
     }
   }

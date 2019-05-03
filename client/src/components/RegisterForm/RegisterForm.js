@@ -8,7 +8,7 @@ const RegisterForm = props => {
         <h1>Register</h1>
         {props.error ? <h4 className="error-message">{props.error}</h4> : null}
         {props.message ? (
-          <div className="succuss-message">{props.message}</div>
+          <div className="success-message">{props.message}</div>
         ) : null}
         <div className="form-group">
           <label>Username:</label>

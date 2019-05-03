@@ -15,7 +15,6 @@ export const addExpense = item => async dispatch => {
     const res = await axios.post("/expense/post", item);
     dispatch({ type: ADD_EXPENSE, payload: res.data });
   } catch (e) {
-    console.log(e);
     dispatch(
       returnError(e.response.data, e.response.status, "POST_EXPENSES_FAILED")
     );

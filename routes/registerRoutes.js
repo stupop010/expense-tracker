@@ -12,27 +12,28 @@ router.post("/user", async (req, res) => {
   if (!username || !email || !password) {
     res.status(400).json({ msg: "Please enter all fields" });
   }
-  User.findOne({ email }).then(user => {
+  try {
+    let user = await User.findOne({ email });
+
     if (user) res.status(400).json({ msg: "User already exists" });
 
-    const newUser = new User({
+    user = new User({
       username,
       password,
       email
     });
 
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.password, salt, function(err, hash) {
-        if (err) throw err;
-        newUser.password = hash;
-        newUser.save().then(user => {
-          res.json({
-            message: "You are now registered and can log in"
-          });
-        });
-      });
-    });
-  });
+    const salt = await bcrypt.genSalt(10);
+
+    user.password = await bcrypt.hash(password, salt);
+
+    await user.save();
+
+    res.json({ message: "You are now registered and can log in" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server error" });
+  }
 });
 
 module.exports = router;

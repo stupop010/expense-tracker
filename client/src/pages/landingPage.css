@@ -36,17 +36,14 @@
 }
 
 .landing-button {
-  color: red;
   padding: 1em;
   border-radius: 25%;
   border: 2px solid black;
-  background: black;
-  color: white;
   text-decoration: none;
 }
+
 .landing-button:hover {
   background: white;
-  color: black;
 }
 
 @keyframes fromUp {
@@ -71,11 +68,11 @@
   }
 }
 
-@media only screen and (max-width: 600px){
-  .landing-page-title{
+@media only screen and (max-width: 600px) {
+  .landing-page-title {
     top: 10%;
   }
-  .landing-page div{
-    top: 10%
+  .landing-page div {
+    top: 10%;
   }
 }

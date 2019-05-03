@@ -20,7 +20,7 @@ const Form = props => {
         <div className="error-message">{errorMessage}</div>
       ) : null}
       {successMessage ? (
-        <div className="error-message">{successMessage}</div>
+        <div className="success-message">{successMessage}</div>
       ) : null}
       <div>
         <div className="form-group">

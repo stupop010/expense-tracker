@@ -12,8 +12,8 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 import "./css/app.css";
 
+import ExpenseAdmin from "./pages/ExpenseAdmin";
 import NavBar from "./components/MainNav/NavBar";
-import UserAdmin from "./pages/UserAdmin"
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -50,20 +50,24 @@ class App extends Component {
               <PrivateRoute exact path="/home" component={Home} auth={user} />
               <PrivateRoute
                 exact
+                path="/expense/:id"
+                component={ExpenseAdmin}
+                auth={user}
+              />
+              <PrivateRoute
+                exact
                 path="/dashboard"
                 component={Dashboard}
                 auth={user}
               />
               <Route exact path="/login" component={Login} auth={user} />
               <Route exact path="/register" component={Register} auth={user} />
-              {/* <Route exact path="/home" component={Home} auth={user} /> */}
               <PrivateRoute
                 exact
                 path="/log"
                 component={ExpenseLog}
                 auth={user}
               />
-              <Route path="/expense-item" component={UserAdmin}/>
             </Switch>
           </div>
         </>

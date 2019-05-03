@@ -4,11 +4,13 @@ import errorReducer from "./errorReducer";
 import authReducer from "./authReducer";
 import expenseReducer from "./expenseReducer";
 import paginationReducer from "./paginationReducer";
+import expenseAdminReducer from "./expenseAdminReducer";
 
 export default combineReducers({
   form: formReducer,
   auth: authReducer,
   expense: expenseReducer,
   pagination: paginationReducer,
-  error: errorReducer
+  error: errorReducer,
+  expenseAdmin: expenseAdminReducer
 });
