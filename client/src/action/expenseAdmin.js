@@ -24,3 +24,13 @@ export const fetchOneExpense = id => async dispatch => {
     dispatch({ type: FETCH_SINGLE_EXPENSES_FAILED });
   }
 };
+
+export const updateExpense = data => async dispatch => {
+  try {
+    console.log(data);
+    const res = await axios.put("/expense-item/patch", { data });
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};

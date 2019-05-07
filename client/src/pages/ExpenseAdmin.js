@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchOneExpense } from "../action/expenseAdmin";
+import { fetchOneExpense, updateExpense } from "../action/expenseAdmin";
 import { getItem } from "../selections/ExpenseSelection";
 import ExpenseAdminForm from "../components/ExpenseAdminForm/ExpenseAdminForm";
 
@@ -25,8 +25,26 @@ class ExpenseAdmin extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onClick = e => {
+    e.preventDefault();
+    console.log(this.props.item._id);
+    const data = {
+      id: this.props.item._id,
+      description: this.state.description,
+      price: this.state.price,
+      category: this.state.category
+    };
+    this.props.updateExpense(data);
+  };
+
   render() {
-    return <ExpenseAdminForm {...this.state} change={this.handleChange} />;
+    return (
+      <ExpenseAdminForm
+        {...this.state}
+        change={this.handleChange}
+        onClick={this.onClick}
+      />
+    );
   }
 }
 
@@ -36,5 +54,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchOneExpense }
+  { fetchOneExpense, updateExpense }
 )(ExpenseAdmin);

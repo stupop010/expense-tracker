@@ -1,6 +1,12 @@
 import React from "react";
 
-const ExpenseAdminForm = ({ description, price, category, change }) => {
+const ExpenseAdminForm = ({
+  description,
+  price,
+  category,
+  change,
+  onClick
+}) => {
   return (
     <div>
       <form className="expense-form">
@@ -48,6 +54,9 @@ const ExpenseAdminForm = ({ description, price, category, change }) => {
             />
           </div>
         </div>
+        <button type="button" onClick={onClick}>
+          click me
+        </button>
       </form>
     </div>
   );

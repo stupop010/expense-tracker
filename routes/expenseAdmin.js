@@ -18,4 +18,24 @@ router.get("/:id", isAuthenticated, async (req, res) => {
   }
 });
 
+// @route  PUT /expense-item/patch
+// @desc   Find expense and update it
+// @access Private
+router.put("/patch", isAuthenticated, async (req, res) => {
+  try {
+    const { description, price, category, id } = req.body.data;
+
+    const item = await Expense.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: { description, price, category }
+      },
+      { new: true }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
+
 module.exports = router;
