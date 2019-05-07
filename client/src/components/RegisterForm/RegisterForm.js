@@ -1,15 +1,12 @@
 import React from "react";
-import "./registerForm.css";
+import FormMessage from "../FormMessage/FormMessage";
 
 const RegisterForm = props => {
   return (
     <div className="login">
       <form onSubmit={props.handleSubmit} className="sign-form m-t">
         <h1>Register</h1>
-        {props.error ? <h4 className="error-message">{props.error}</h4> : null}
-        {props.message ? (
-          <div className="success-message">{props.message}</div>
-        ) : null}
+        <FormMessage error={props.error} message={props.message} />
         <div className="form-group">
           <label>Username:</label>
           <input

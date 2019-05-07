@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import FormMessage from "../FormMessage/FormMessage";
+
 const Form = props => {
   const {
     categries,
@@ -16,12 +18,7 @@ const Form = props => {
   return (
     <form onSubmit={submit} className="expense-form">
       <h1>Add Expenses</h1>
-      {errorMessage ? (
-        <div className="error-message">{errorMessage}</div>
-      ) : null}
-      {successMessage ? (
-        <div className="success-message">{successMessage}</div>
-      ) : null}
+      <FormMessage error={errorMessage} message={successMessage} />
       <div>
         <div className="form-group">
           <label>Categories</label>

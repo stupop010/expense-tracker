@@ -9,15 +9,15 @@ import { clearErrors } from "../action/errorAction";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 class Login extends Component {
-  state = { email: "", password: "", msg: null };
+  state = { email: "", password: "", errMessage: null };
 
   componentDidUpdate(prevProps) {
     const { isAuthenticated, error } = this.props;
     if (error !== prevProps.error) {
       if ((error.id = "LOGIN_USER_FAILED")) {
-        this.setState({ msg: error.msg });
+        this.setState({ errMessage: error.msg.msg });
       } else {
-        this.setState({ msg: null });
+        this.setState({ errMessage: null });
       }
     }
     if (isAuthenticated !== prevProps.isAuthenticated) {
@@ -52,7 +52,7 @@ class Login extends Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleRegister={this.handleRegister}
-        msg={this.state.msg}
+        error={this.state.errMessage}
       />
     );
   }
