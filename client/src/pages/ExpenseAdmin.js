@@ -27,7 +27,6 @@ class ExpenseAdmin extends Component {
 
   onClick = e => {
     e.preventDefault();
-    console.log(this.props.item._id);
     const data = {
       id: this.props.item._id,
       description: this.state.description,

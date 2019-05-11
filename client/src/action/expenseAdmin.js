@@ -1,8 +1,10 @@
 import axios from "axios";
 import { returnError } from "./errorAction";
+import { history } from "../history";
 import {
   FETCH_SINGLE_EXPENSE,
-  FETCH_SINGLE_EXPENSES_FAILED
+  FETCH_SINGLE_EXPENSES_FAILED,
+  EXPENSE_PATCHED_SUCCESS
 } from "../constants/actionTypes";
 
 export const fetchOneExpense = id => async dispatch => {
@@ -13,11 +15,11 @@ export const fetchOneExpense = id => async dispatch => {
       }
     });
     dispatch({ type: FETCH_SINGLE_EXPENSE, payload: res.data });
-  } catch (e) {
+  } catch (err) {
     dispatch(
       returnError(
-        e.response.data,
-        e.response.status,
+        err.response.data,
+        err.response.status,
         "FETCH_SINGLE_EXPENSES_FAILED"
       )
     );
@@ -27,10 +29,16 @@ export const fetchOneExpense = id => async dispatch => {
 
 export const updateExpense = data => async dispatch => {
   try {
-    console.log(data);
     const res = await axios.put("/expense-item/patch", { data });
-    console.log(res);
+    dispatch({ type: EXPENSE_PATCHED_SUCCESS, payload: res.data });
+    history.push("/home");
   } catch (err) {
-    console.log(err);
+    dispatch(
+      returnError(
+        err.response.data,
+        err.response.status,
+        "FETCH_PATCHED_FAILED"
+      )
+    );
   }
 };

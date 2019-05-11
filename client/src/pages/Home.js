@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
@@ -43,7 +44,9 @@ Home.protoTypes = {
   auth: PropTypes.any.isRequired
 };
 
-export default connect(
-  mapStateToProps,
-  { addExpense, fetchExpenses, fetchUser }
-)(Home);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { addExpense, fetchExpenses, fetchUser }
+  )(Home)
+);

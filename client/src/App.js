@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { Router, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-
+import { history } from "./history";
 import "./css/app.css";
 
 import Routes from "./components/Routes";
@@ -21,7 +21,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <>
           <NavBar />
           <div className="main-app">
@@ -39,9 +39,9 @@ App.protoTypes = {
   fetchUser: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return { auth: getUser(state) };
-}
+};
 
 export default connect(
   mapStateToProps,
