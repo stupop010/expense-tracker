@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchOneExpense, updateExpense } from "../action/expenseAdmin";
+import {
+  fetchOneExpense,
+  updateExpense,
+  deleteExpense
+} from "../action/expenseAdmin";
 import { getItem } from "../selections/ExpenseSelection";
 import ExpenseAdminForm from "../components/ExpenseAdminForm/ExpenseAdminForm";
 
@@ -25,7 +29,7 @@ class ExpenseAdmin extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onClick = e => {
+  editItem = e => {
     e.preventDefault();
     const data = {
       id: this.props.item._id,
@@ -36,12 +40,18 @@ class ExpenseAdmin extends Component {
     this.props.updateExpense(data);
   };
 
+  deleteItem = e => {
+    e.preventDefault();
+    this.props.deleteExpense(this.props.item._id);
+  };
+
   render() {
     return (
       <ExpenseAdminForm
         {...this.state}
         change={this.handleChange}
-        onClick={this.onClick}
+        editItem={this.editItem}
+        deleteItem={this.deleteItem}
       />
     );
   }
@@ -53,5 +63,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchOneExpense, updateExpense }
+  { fetchOneExpense, updateExpense, deleteExpense }
 )(ExpenseAdmin);

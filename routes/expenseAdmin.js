@@ -25,7 +25,7 @@ router.put("/patch", isAuthenticated, async (req, res) => {
   try {
     const { description, price, category, id } = req.body.data;
 
-    const item = await Expense.findOneAndUpdate(
+    await Expense.findOneAndUpdate(
       { _id: id },
       {
         $set: { description, price, category }
@@ -35,6 +35,20 @@ router.put("/patch", isAuthenticated, async (req, res) => {
     res.json({ msg: "Success updated" });
   } catch (err) {
     console.error(err.message);
+    res.status(500).json({ msg: "Server Error" });
+  }
+});
+
+// @route  DELETE /expense-item/delete
+// @desc   Find one and delete
+// @access Private
+router.delete("/delete", isAuthenticated, async (req, res) => {
+  try {
+    const id = req.body.id;
+    await Expense.findByIdAndDelete(id);
+    res.json({ msg: "Success Deleted" });
+  } catch (err) {
+    console.error(err);
     res.status(500).json({ msg: "Server Error" });
   }
 });

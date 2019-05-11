@@ -23,3 +23,27 @@ a:visited {
   height: auto;
   width: 100%;
 }
+
+.admin-button {
+  padding: 1rem;
+  margin: 1rem 1rem;
+  border-radius: 3px;
+  border: 1px solid black;
+  font-weight: bold;
+  box-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+  transition-duration: 400ms;
+  transition-property: background-color, color;
+}
+
+.red {
+  background-color: rgba(255, 51, 51, 0.8);
+}
+
+.admin-button:hover {
+  background: rgba(65, 169, 234, 0.5);
+  cursor: pointer;
+}
+.admin-button.red:hover {
+  background: rgb(204, 0, 0);
+  color: white;
+}

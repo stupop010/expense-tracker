@@ -5,7 +5,8 @@ const ExpenseAdminForm = ({
   price,
   category,
   change,
-  onClick
+  editItem,
+  deleteItem
 }) => {
   return (
     <div>
@@ -54,8 +55,11 @@ const ExpenseAdminForm = ({
             />
           </div>
         </div>
-        <button type="button" onClick={onClick}>
-          click me
+        <button type="button" className="admin-button" onClick={editItem}>
+          Edit Expense
+        </button>
+        <button type="button" className="admin-button red" onClick={deleteItem}>
+          Delete Expense
         </button>
       </form>
     </div>

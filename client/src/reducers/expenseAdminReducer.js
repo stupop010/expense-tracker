@@ -1,7 +1,9 @@
 import {
   FETCH_SINGLE_EXPENSE,
   FETCH_SINGLE_EXPENSES_FAILED,
-  EXPENSE_PATCHED_SUCCESS
+  EXPENSE_PATCHED_SUCCESS,
+  DELETE_EXPENSE_FAILED,
+  DELETE_EXPENSE_SUCCESS
 } from "../constants/actionTypes";
 
 const initialState = {
@@ -18,10 +20,8 @@ export default function(state = initialState, action) {
         msg: null
       };
     case FETCH_SINGLE_EXPENSES_FAILED:
-      return {
-        ...state,
-        msg: null
-      };
+    case DELETE_EXPENSE_FAILED:
+    case DELETE_EXPENSE_SUCCESS:
     case EXPENSE_PATCHED_SUCCESS:
       return {
         ...state,
