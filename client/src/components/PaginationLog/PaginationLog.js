@@ -2,6 +2,7 @@ import React from "react";
 
 import ExpenseList from "../ExpenseList";
 import "./paginationLog.css";
+import LogReturn from "../LogReturn/LogReturn";
 
 const PaginationLog = props => {
   const items = props.pagItems;
@@ -10,9 +11,9 @@ const PaginationLog = props => {
       <h2 className="title">Expense Log</h2>
       {items.map(item => {
         return (
-          <div key={item._id} className="pag-card">
+          <LogReturn item={item} key={item._id} className={"pag-card"}>
             <ExpenseList expense={item} />
-          </div>
+          </LogReturn>
         );
       })}
       {props.msg ? <h2 className="pag-error">{props.msg}</h2> : null}

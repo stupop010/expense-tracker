@@ -48,6 +48,7 @@
   box-shadow: 2px 2px 1px #888888;
   transition-duration: 400ms;
   transition-property: background-color, color;
+  outline: none;
 }
 .pag-button:hover {
   color: white;

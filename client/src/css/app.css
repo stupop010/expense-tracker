@@ -47,3 +47,23 @@ a:visited {
   background: rgb(204, 0, 0);
   color: white;
 }
+
+.entry {
+  animation-name: entry;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+}
+
+@keyframes entry {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  25% {
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

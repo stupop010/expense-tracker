@@ -10,7 +10,7 @@ const ExpenseAdminForm = ({
 }) => {
   return (
     <div>
-      <form className="expense-form">
+      <form className="expense-form entry">
         <h1>Expense Admin</h1>
         <div>
           <div className="form-group">

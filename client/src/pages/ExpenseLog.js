@@ -21,7 +21,6 @@ class ExpenseLog extends Component {
 
   componentDidMount() {
     if (isEmpty(this.props.pagItems)) {
-      console.log("im called");
       this.props.pagintionExpense(this.state.limit, this.props.userId);
     }
   }
