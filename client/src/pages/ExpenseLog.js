@@ -11,6 +11,8 @@ import {
 } from "../selections/PaginationSelection";
 import { pagintionExpense } from "../action/expenseAction";
 
+import { isEmpty } from "../utils/isEmpty";
+
 class ExpenseLog extends Component {
   state = {
     limit: 10,
@@ -18,15 +20,19 @@ class ExpenseLog extends Component {
   };
 
   componentDidMount() {
-    this.props.pagintionExpense(this.state.limit, this.props.userId);
+    if (isEmpty(this.props.pagItems)) {
+      console.log("im called");
+      this.props.pagintionExpense(this.state.limit, this.props.userId);
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const currentItems = this.props.pagItems;
     if (prevState.limit !== this.state.limit) {
       this.props.pagintionExpense(this.state.limit, this.props.userId);
     }
-    if (prevProps.pagItems !== this.props.pagItems) {
-      if (prevProps.pagItems.length === this.props.pagItems.length) {
+    if (prevProps.pagItems !== currentItems) {
+      if (prevProps.pagItems.length === currentItems.length) {
         this.setState({ msg: "No more can be found" });
       } else {
         this.setState({ msg: null });
