@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const User = mongoose.model("users");
+const User = mongoose.model("user");
 
 router.post("/user", async (req, res) => {
   const { username, email, password } = req.body;

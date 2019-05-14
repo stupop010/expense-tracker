@@ -11,7 +11,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 router.get("/:id", isAuthenticated, async (req, res) => {
   try {
     const item = await Expense.findById(req.query.id);
-    res.send(item);
+    res.json(item);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ msg: "Server Error" });
@@ -39,7 +39,7 @@ router.put("/patch", isAuthenticated, async (req, res) => {
   }
 });
 
-// @route  DELETE /expense-item/delete
+// @route  DELETE /expense-item
 // @desc   Find one and delete
 // @access Private
 router.delete("/delete", isAuthenticated, async (req, res) => {

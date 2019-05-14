@@ -9,9 +9,8 @@ import {
   getPagination,
   paginationLoading
 } from "../selections/PaginationSelection";
+import { errorMessage } from "../selections/ErrorSelection";
 import { pagintionExpense } from "../action/expenseAction";
-
-import { isEmpty } from "../utils/isEmpty";
 
 class ExpenseLog extends Component {
   state = {
@@ -20,19 +19,25 @@ class ExpenseLog extends Component {
   };
 
   componentDidMount() {
-    if (isEmpty(this.props.pagItems)) {
-      this.props.pagintionExpense(this.state.limit, this.props.userId);
-    }
+    this.props.pagintionExpense(this.state.limit, this.props.userId);
   }
 
   componentDidUpdate(prevProps, prevState) {
     const currentItems = this.props.pagItems;
+    const { error } = this.props;
     if (prevState.limit !== this.state.limit) {
       this.props.pagintionExpense(this.state.limit, this.props.userId);
     }
     if (prevProps.pagItems !== currentItems) {
       if (prevProps.pagItems.length === currentItems.length) {
         this.setState({ msg: "No more can be found" });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+    if (error !== prevProps.error) {
+      if (error.id === "FETCH_PAGINATION_FAILED") {
+        this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
       }
@@ -68,7 +73,8 @@ const mapStateToProps = state => {
   return {
     pagItems: getPagination(state),
     pagLoading: paginationLoading(state),
-    userId: getUserId(state)
+    userId: getUserId(state),
+    error: errorMessage(state)
   };
 };
 

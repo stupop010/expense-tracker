@@ -61,12 +61,12 @@ class ExpenseForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     error: errorMessage(state),
     successMessage: expenseSuccessMessage(state)
   };
-}
+};
 
 ExpenseForm.propTypes = {
   onSubmit: PropTypes.func.isRequired

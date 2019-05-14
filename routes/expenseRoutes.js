@@ -25,7 +25,7 @@ router.post("/post", isAuthenticated, async (req, res) => {
     await expense.save();
     res.status(201).json(expense);
   } catch (e) {
-    res.status(400).json({ msg: "Failed to add expense" });
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -38,7 +38,7 @@ router.get("/get_5", isAuthenticated, async (req, res) => {
     // check if the expense array is emtpy
     isEmptyExpense(revExpense, res);
   } catch (e) {
-    res.status(400).json({ msg: "Can't fetch expenses" });
+    res.status(500).json({ msg: "Server Error" });
   }
 });
 
@@ -52,8 +52,8 @@ router.get("/all", isAuthenticated, async (req, res) => {
     // check if the expense array is empty
     isEmptyExpense(expense, res);
   } catch (e) {
-    res.status(400).json({
-      msg: "Can't not retrieve expense"
+    res.status(500).json({
+      msg: "Server Error"
     });
   }
 });

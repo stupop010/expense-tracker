@@ -6,7 +6,8 @@ import {
   IS_FETCHING,
   FETCH_PAGINATION_EXPENSE,
   FETCH_EXPENSES_FAILED,
-  POST_EXPENSES_FAILED
+  POST_EXPENSES_FAILED,
+  FETCH_PAGINATION_FAILED
 } from "../constants/actionTypes";
 
 // Add expense
@@ -43,11 +44,18 @@ export const fetchExpenses = () => async dispatch => {
 
 // Fetch Pagintion Expense
 export const pagintionExpense = limit => async dispatch => {
-  const config = {
-    headers: {
-      "Content-type": "application/json"
-    }
-  };
-  const res = await axios.get("/expense/all", { params: { limit } }, config);
-  dispatch({ type: FETCH_PAGINATION_EXPENSE, payload: res.data });
+  try {
+    const config = {
+      headers: {
+        "Content-type": "application/json"
+      }
+    };
+    const res = await axios.get("/expense/all", { params: { limit } }, config);
+    dispatch({ type: FETCH_PAGINATION_EXPENSE, payload: res.data });
+  } catch (e) {
+    dispatch(
+      returnError(e.response.data, e.response.status, "FETCH_PAGINATION_FAILED")
+    );
+    dispatch({ type: FETCH_PAGINATION_FAILED });
+  }
 };
