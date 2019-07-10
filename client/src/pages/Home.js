@@ -1,33 +1,37 @@
-import React, { Component } from "react";
+import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
 import ExpenseForm from "../components/Form/ExpenseForm";
 import RecentLog from "../components/RecentLog/RecentLog";
+import MonthlyOutgoing from "../components/MonthlyOutgoing/MonthlyOutgoing";
 import { fetchUser } from "../action/userAction";
 import { addExpense, fetchExpenses } from "../action/expenseAction";
 import { getExpense, getLoading } from "../selections/ExpenseSelection";
 import "../css/app.css";
 import { getUserId } from "../selections/UserSelection";
 
-class Home extends Component {
-  componentDidMount() {
-    this.props.fetchExpenses();
-  }
-  onSubmit = value => {
-    this.props.addExpense(value);
+const Home = ({ addExpense, expense, loading }) => {
+  useEffect(() => {
+    fetchExpenses();
+    console.log("called");
+  }, []);
+
+  const onSubmit = value => {
+    addExpense(value);
   };
-  render() {
-    const { expense, loading } = this.props;
-    return (
-      <div className="home-container">
-        <ExpenseForm onSubmit={this.onSubmit} />
+
+  return (
+    <div className="home-container">
+      <div className="left-container">
+        <ExpenseForm onSubmit={onSubmit} />
         <RecentLog expense={expense} loading={loading} />
       </div>
-    );
-  }
-}
+      <MonthlyOutgoing />
+    </div>
+  );
+};
 
 const mapStateToProps = state => {
   return {

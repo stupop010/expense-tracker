@@ -14,14 +14,22 @@ a:visited {
 .main-app {
   display: flex;
   height: 100vh;
-  width: 100vw;
-  overflow: scroll;
+  width: 100%;
   justify-content: center;
 }
 .home-container,
 .expense-container {
   height: auto;
   width: 100%;
+}
+
+.home-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left-container {
+  width: 70rem;
 }
 
 .admin-button {
