@@ -32,14 +32,10 @@ class RecentLog extends Component {
   }
 
   render() {
-    const { expense, loading } = this.props;
+    const { expense } = this.props;
     return (
       <div className="card-contaniner">
-        {loading ? (
-          <Loader />
-        ) : (
-          <Log expense={expense} error={this.state.msg} />
-        )}
+        <Log expense={expense} error={this.state.msg} />
       </div>
     );
   }

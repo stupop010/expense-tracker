@@ -9,7 +9,7 @@ import { sliceFive } from "../utils/sliceFive";
 
 const initialState = {
   items: [],
-  isLoading: false,
+  isLoading: null,
   message: null
 };
 

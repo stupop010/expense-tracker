@@ -25,6 +25,7 @@ export const addExpense = item => async dispatch => {
 
 // Fetch All Expense
 export const fetchExpenses = () => async dispatch => {
+  console.log("im called in expense");
   const config = {
     headers: {
       "Content-type": "application/json"
@@ -33,6 +34,7 @@ export const fetchExpenses = () => async dispatch => {
   try {
     dispatch({ type: IS_FETCHING });
     const res = await axios.get("/expense/get_5", config);
+    console.log(res.data);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
     dispatch(

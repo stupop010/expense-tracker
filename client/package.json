@@ -12,15 +12,9 @@
     "i": "^0.3.6",
     "npm": "^6.10.0",
     "prop-types": "^15.7.2",
-<<<<<<< HEAD
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-redux": "^6.0.1",
-=======
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
->>>>>>> bf86eab7182e47459ccd9650055be1441d246949
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.0.1",
     "redux": "^4.0.3",

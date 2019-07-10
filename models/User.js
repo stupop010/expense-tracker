@@ -16,7 +16,19 @@ const UserSchema = new Schema({
   register_date: {
     type: Date,
     default: Date.now
-  }
+  },
+  monthlyOutgoings: [
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      howMuch: {
+        type: Number,
+        required: true
+      }
+    }
+  ]
 });
 
 mongoose.model("user", UserSchema);
