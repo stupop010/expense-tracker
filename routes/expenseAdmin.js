@@ -44,8 +44,7 @@ router.put("/patch", isAuthenticated, async (req, res) => {
 // @access Private
 router.delete("/delete", isAuthenticated, async (req, res) => {
   try {
-    const id = req.body.id;
-    await Expense.findByIdAndDelete(id);
+    await Expense.findByIdAndDelete(req.body.id);
     res.json({ msg: "Success Deleted" });
   } catch (err) {
     console.error(err);

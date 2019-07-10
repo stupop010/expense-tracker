@@ -1,0 +1,14 @@
+.dash-container {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  height: 80%;
+  width: 60rem;
+  margin-top: 2rem;
+  background: red;
+}
+
+.search-layout {
+  height: 100%;
+  width: 100%;
+  background: blue;
+}

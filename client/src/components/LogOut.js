@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { logOut } from "../action/userAction";
 
-const LogOut = ({logOut}) => {
+const LogOut = ({ logOut }) => {
   return (
     <a href="/api/logout" onClick={logOut}>
       LogOut

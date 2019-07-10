@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { getUser } from "../../selections/UserSelection";
@@ -75,7 +75,7 @@ class NavBar extends Component {
       case false:
         return (
           <li className="nav-item">
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         );
       default:
