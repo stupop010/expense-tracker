@@ -13,7 +13,7 @@ import {
 // Add expense
 export const addExpense = item => async dispatch => {
   try {
-    const res = await axios.post("/expense/post", item);
+    const res = await axios.post("/expense/post", item, config);
     dispatch({ type: ADD_EXPENSE, payload: res.data });
   } catch (e) {
     dispatch(
@@ -25,16 +25,9 @@ export const addExpense = item => async dispatch => {
 
 // Fetch All Expense
 export const fetchExpenses = () => async dispatch => {
-  console.log("im called in expense");
-  const config = {
-    headers: {
-      "Content-type": "application/json"
-    }
-  };
   try {
     dispatch({ type: IS_FETCHING });
     const res = await axios.get("/expense/get_5", config);
-    console.log(res.data);
     dispatch({ type: FETCH_EXPENSES, payload: res.data });
   } catch (e) {
     dispatch(
@@ -47,11 +40,6 @@ export const fetchExpenses = () => async dispatch => {
 // Fetch Pagintion Expense
 export const pagintionExpense = limit => async dispatch => {
   try {
-    const config = {
-      headers: {
-        "Content-type": "application/json"
-      }
-    };
     const res = await axios.get("/expense/all", { params: { limit } }, config);
     dispatch({ type: FETCH_PAGINATION_EXPENSE, payload: res.data });
   } catch (e) {
@@ -59,5 +47,11 @@ export const pagintionExpense = limit => async dispatch => {
       returnError(e.response.data, e.response.status, "FETCH_PAGINATION_FAILED")
     );
     dispatch({ type: FETCH_PAGINATION_FAILED });
+  }
+};
+
+const config = {
+  headers: {
+    "Content-type": "application/json"
   }
 };

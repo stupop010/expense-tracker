@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import { clearErrors } from "../../action/errorAction";
 import { errorMessage } from "../../selections/ErrorSelection";
-import Loader from "../Loader/Loader";
 import Log from "./Log";
 import "./recentLog.css";
 
@@ -43,7 +42,6 @@ class RecentLog extends Component {
 
 RecentLog.propTypes = {
   expense: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   clearErrors: PropTypes.func.isRequired
 };
