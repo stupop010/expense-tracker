@@ -24,7 +24,7 @@ const LoginForm = props => {
           </div>
         </div>
         <button type="submit" className="form-button">
-          Sumbit
+          Submit
         </button>
         <button
           type="button"

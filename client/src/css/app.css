@@ -15,6 +15,11 @@ a {
 a:visited {
   color: inherit;
 }
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .main-app {
   display: flex;
   margin-top: 4rem;

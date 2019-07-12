@@ -23,7 +23,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
       },
-      howMuch: {
+      price: {
         type: Number,
         required: true
       }
