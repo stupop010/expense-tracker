@@ -5,7 +5,7 @@ import {
   FETCH_EXPENSES_FAILED,
   POST_EXPENSES_FAILED
 } from "../constants/actionTypes";
-import { sliceFive } from "../utils/sliceFive";
+import { sliceFive } from "../../utils/sliceFive";
 
 const initialState = {
   items: [],

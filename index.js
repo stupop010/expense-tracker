@@ -33,7 +33,7 @@ app.use("/expense", require("./routes/expenseRoutes.js"));
 app.use("/auth", require("./routes/googleAuth.js"));
 app.use("/register", require("./routes/registerRoutes.js"));
 app.use("/expense-item", require("./routes/expenseAdmin.js"));
-app.use("/outgoing", require("./routes/monthlyOutgoingRoutes.js"));
+// app.use("/outgoing", require("./routes/monthlyOutgoingRoutes.js"));
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder

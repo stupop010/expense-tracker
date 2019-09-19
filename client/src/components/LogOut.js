@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { logOut } from "../action/userAction";
+import { logOut } from "../redux/action/userAction";
 
 const LogOut = ({ logOut }) => {
   return (

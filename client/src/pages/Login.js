@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { isAuthenticated } from "../selections/UserSelection";
-import { errorMessage } from "../selections/ErrorSelection";
-import { userLogin } from "../action/userAction";
-import { clearErrors } from "../action/errorAction";
+import { isAuthenticated } from "../redux/selections/UserSelection";
+import { errorMessage } from "../redux/selections/ErrorSelection";
+import { userLogin } from "../redux/action/userAction";
+import { clearErrors } from "../redux/action/errorAction";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 class Login extends Component {

@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { getUserId } from "../selections/UserSelection";
+import { getUserId } from "../redux/selections/UserSelection";
 import PaginationLog from "../components/PaginationLog/PaginationLog";
 import "../css/app.css";
 import {
   getPagination,
   paginationLoading
-} from "../selections/PaginationSelection";
-import { errorMessage } from "../selections/ErrorSelection";
-import { pagintionExpense } from "../action/expenseAction";
+} from "../redux/selections/PaginationSelection";
+import { errorMessage } from "../redux/selections/ErrorSelection";
+import { pagintionExpense } from "../redux/action/expenseAction";
 
 class ExpenseLog extends Component {
   state = {

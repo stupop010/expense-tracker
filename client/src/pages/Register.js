@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { isAuthenticated, successMessage } from "../selections/UserSelection";
-import { errorMessage } from "../selections/ErrorSelection";
-import { clearErrors } from "../action/errorAction";
-import { registerUser } from "../action/userAction";
+import {
+  isAuthenticated,
+  successMessage
+} from "../redux/selections/UserSelection";
+import { errorMessage } from "../redux/selections/ErrorSelection";
+import { clearErrors } from "../redux/action/errorAction";
+import { registerUser } from "../redux/action/userAction";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
 
 class Register extends Component {

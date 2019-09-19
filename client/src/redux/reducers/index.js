@@ -5,7 +5,7 @@ import authReducer from "./authReducer";
 import expenseReducer from "./expenseReducer";
 import paginationReducer from "./paginationReducer";
 import expenseAdminReducer from "./expenseAdminReducer";
-import monthlyOutgoingReducer from "./monthlyOutgoingReducer";
+// import monthlyOutgoingReducer from "./monthlyOutgoingReducer";
 
 export default combineReducers({
   form: formReducer,
@@ -13,6 +13,6 @@ export default combineReducers({
   expense: expenseReducer,
   pagination: paginationReducer,
   error: errorReducer,
-  expenseAdmin: expenseAdminReducer,
-  monthlyOutgoing: monthlyOutgoingReducer
+  expenseAdmin: expenseAdminReducer
+  // monthlyOutgoing: monthlyOutgoingReducer
 });

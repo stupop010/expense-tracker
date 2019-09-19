@@ -34,11 +34,11 @@ ul {
 
 .home-container {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
 }
-
-.left-container {
-  width: 70rem;
+.flex-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .admin-button {

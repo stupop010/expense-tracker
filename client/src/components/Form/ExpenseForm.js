@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { errorMessage } from "../../selections/ErrorSelection";
-import { expenseSuccessMessage } from "../../selections/ExpenseSelection";
+import { errorMessage } from "../../redux/selections/ErrorSelection";
+import { expenseSuccessMessage } from "../../redux/selections/ExpenseSelection";
 import Form from "./Form";
 import "./form.css";
 

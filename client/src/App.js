@@ -9,8 +9,8 @@ import "./css/app.css";
 
 import Routes from "./components/Routes";
 import NavBar from "./components/MainNav/NavBar";
-import { getUser } from "./selections/UserSelection";
-import { fetchUser } from "./action/userAction";
+import { getUser } from "./redux/selections/UserSelection";
+import { fetchUser } from "./redux/action/userAction";
 
 library.add(fab);
 

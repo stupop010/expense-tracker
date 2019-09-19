@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { clearErrors } from "../../action/errorAction";
-import { errorMessage } from "../../selections/ErrorSelection";
+import { clearErrors } from "../../redux/action/errorAction";
+import { errorMessage } from "../../redux/selections/ErrorSelection";
 import Log from "./Log";
 import "./recentLog.css";
 

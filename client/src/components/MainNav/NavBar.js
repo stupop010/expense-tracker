@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { getUser } from "../../selections/UserSelection";
+import { getUser } from "../../redux/selections/UserSelection";
 import Sidebar from "../Sidebar/Sidebar";
 import LogOut from "../LogOut";
 import "./navBar.css";

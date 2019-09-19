@@ -1,6 +1,6 @@
 import axios from "axios";
 import { returnError } from "./errorAction";
-import { history } from "../history";
+import { history } from "../../history";
 import {
   FETCH_SINGLE_EXPENSE,
   FETCH_SINGLE_EXPENSES_FAILED,

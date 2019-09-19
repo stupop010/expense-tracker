@@ -5,8 +5,8 @@ import {
   fetchOneExpense,
   updateExpense,
   deleteExpense
-} from "../action/expenseAdmin";
-import { getItem } from "../selections/ExpenseSelection";
+} from "../redux/action/expenseAdmin";
+import { getItem } from "../redux/selections/ExpenseSelection";
 import ExpenseAdminForm from "../components/ExpenseAdminForm/ExpenseAdminForm";
 
 class ExpenseAdmin extends Component {
